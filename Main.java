@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+
 import screens.Register;
 
 public class Main extends JFrame{
@@ -8,7 +9,6 @@ public class Main extends JFrame{
         main.add(register.getPanel());
         main.setSize(750,600);
         main.setVisible(true);
-        main.setResizable(false);
     }
 
     public Main() {
