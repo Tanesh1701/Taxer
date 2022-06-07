@@ -14,7 +14,7 @@ public class Title extends JLabel{ //model class for headers
         title.setForeground(Color.decode("#565656"));
         try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, Title.class.getResourceAsStream("../Assets/Fonts/VarelaRound-Regular.TTF"));
-            title.setFont(font.deriveFont(Font.PLAIN, 17f));
+            title.setFont(font.deriveFont(Font.PLAIN, 18f));
         } catch (Exception e) {
             System.out.println(e);
         } 

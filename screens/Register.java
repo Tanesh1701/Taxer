@@ -6,6 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import models.Button;
 import models.Constants;
 import models.Field;
 import models.Title;
@@ -31,14 +32,17 @@ public class Register extends JPanel{
         tfPanel.setLayout(new BoxLayout(tfPanel, BoxLayout.PAGE_AXIS));
         tfPanel.add(headerPanel);
         tfPanel.add(textfieldFullName.getTextfieldPanel());
-        tfPanel.add(Box.createRigidArea(new Dimension(0, 40)));
+        tfPanel.add(Box.createRigidArea(new Dimension(0, 40))); //create some space between elements
         tfPanel.add(textfieldUserName.getTextfieldPanel());
         tfPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         tfPanel.add(textfieldEmail.getTextfieldPanel());
         tfPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         tfPanel.add(textfieldPassword.getTextfieldPanel());
-        panel.setBorder(new EmptyBorder(20, 0, 0, 0));
+        panel.setBorder(new EmptyBorder(0, 0, 50, 0));
+        Button registerButton = new Button("Register");
+        tfPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         panel.add(tfPanel);
+        panel.add(registerButton.getButton());
         tfPanel.setBackground(constants.getPrimaryColor());
         panel.setVisible(true);
     }
