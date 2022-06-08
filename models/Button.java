@@ -1,17 +1,13 @@
 package models;
-
 import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.JButton;
 
 public class Button extends JButton {
-    private String buttonText;
     private JButton button;
     Constants constants = new Constants();
 
     public Button(String buttonText) {
-        this.buttonText = buttonText;
         button = new JButton(buttonText);
         button.setOpaque(true);
         button.setPreferredSize(new Dimension(50,40));

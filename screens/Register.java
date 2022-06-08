@@ -5,17 +5,20 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import models.Button;
 import models.Constants;
 import models.Field;
 import models.Title;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Register extends JPanel{
     private Title header = new Title("Register Now");
     private JPanel panel = new JPanel();
     private JPanel headerPanel = new JPanel();
     private JPanel tfPanel = new JPanel();
+    Button registerButton;
     Constants constants = new Constants();
 
     public Register() {
@@ -38,8 +41,10 @@ public class Register extends JPanel{
         tfPanel.add(textfieldEmail.getTextfieldPanel());
         tfPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         tfPanel.add(textfieldPassword.getTextfieldPanel());
-        panel.setBorder(new EmptyBorder(0, 0, 50, 0));
-        Button registerButton = new Button("Register");
+        panel.setBorder(new EmptyBorder(0, 0, 35, 0));
+        registerButton = new Button("Register");
+        ButtonHandler handler = new ButtonHandler();
+        registerButton.getButton().addActionListener(handler);
         tfPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         panel.add(tfPanel);
         panel.add(registerButton.getButton());
@@ -47,7 +52,17 @@ public class Register extends JPanel{
         panel.setVisible(true);
     }
 
+    private class ButtonHandler implements ActionListener {
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            CardLayout cl = (CardLayout) (Main.getCards().getLayout());
+            cl.show(Main.getCards(), "HomeScreen");
+        }
+    }
+
     public JPanel getPanel() {
         return panel;
     }
+
 }
