@@ -18,6 +18,8 @@ public class HomeScreen extends JPanel{
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         Title homeScreenHeader = new Title("Welcome to Taxer");
         getStartedBtn = new Button("Get Started");
+        ButtonHandler handler = new ButtonHandler();
+        getStartedBtn.getButton().addActionListener(handler);
         mainPanel.add(homeScreenHeader.getTitle());
         mainPanel.add(getStartedBtn.getButton());
         mainPanel.setVisible(true);
