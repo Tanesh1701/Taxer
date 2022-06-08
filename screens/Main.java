@@ -1,4 +1,5 @@
 package screens;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.*;
@@ -9,11 +10,14 @@ public class Main extends JFrame{
 
     public Main() {
         super("Taxer");
+        ImageIcon img = new ImageIcon(getClass().getResource("../Assets/Logo/1024.png"));
+        setIconImage(img.getImage());
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
         Register register = new Register();
         HomeScreen homeScreen = new HomeScreen();
-        //main.add(register.getPanel());
+        Login login = new Login();
+        //cards.add(login.getPanel(), "Login");
         cards.add(homeScreen.getMainPanel(), "HomeScreen");
         cards.add(register.getPanel(), "Register");
         cards.setOpaque(true);
