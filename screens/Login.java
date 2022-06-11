@@ -54,26 +54,28 @@ public class Login extends JPanel{
         Text here = new Text("here", 12);
         here.getTitle().setForeground(constants.getSecondaryColor());
         here.getTitle().addMouseListener(handler);
+
         Font font = here.getTitle().getFont();
 
-        @SuppressWarnings("unchecked") 
-        Map<TextAttribute, Integer> attributes = (Map<TextAttribute, Integer>) font.getAttributes();
-        
-        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        @SuppressWarnings("unchecked") //suppress check for unchecked cast(type safety) 
+        Map<TextAttribute, Integer> attributes = (Map<TextAttribute, Integer>) font.getAttributes(); //type safety map to get all attributes of font
+
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON); //set jlabel text to underlined
         here.getTitle().setFont(font.deriveFont(attributes));
+
         JPanel containerContinue = new JPanel();
         containerContinue.setBackground(Color.WHITE);
         containerContinue.add(getStarted.getTitle());
         containerContinue.add(here.getTitle());
 
         panel.add(tfPanel);
-        panel.add(containerBtn);
+        panel.add(containerBtn); //adding to a new panel and then adding to the main panel centers component automatically
         panel.add(Box.createRigidArea(new Dimension(0,20)));
         panel.add(containerContinue);
         panel.setVisible(true);
     }
 
-    private class ButtonHandler implements MouseListener {
+    private class ButtonHandler implements MouseListener { //mouse listener takes in mandatory all mouse events
 
         @Override
         public void mouseClicked(MouseEvent e) {
