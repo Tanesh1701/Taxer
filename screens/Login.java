@@ -45,6 +45,7 @@ public class Login extends JPanel{
 
         Button loginBtn = new Button("Login");
         loginBtn.getButton().setPreferredSize(new Dimension(80,40));
+        loginBtn.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
         JPanel containerBtn = new JPanel();
         containerBtn.setBackground(Color.WHITE);        
         containerBtn.add(loginBtn.getButton());
@@ -54,6 +55,7 @@ public class Login extends JPanel{
         Text here = new Text("here", 12);
         here.getTitle().setForeground(constants.getSecondaryColor());
         here.getTitle().addMouseListener(handler);
+        here.getTitle().setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         Font font = here.getTitle().getFont();
 

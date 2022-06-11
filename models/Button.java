@@ -13,6 +13,7 @@ public class Button extends JButton {
         button.setPreferredSize(new Dimension(60,40));
         button.setBackground(constants.getSecondaryColor());
         button.setForeground(constants.getPrimaryColor());
+        button.setBorderPainted(false);
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 button.setBackground(Color.black);

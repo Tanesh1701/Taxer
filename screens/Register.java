@@ -43,6 +43,7 @@ public class Register extends JPanel{
         tfPanel.add(textfieldPassword.getTextfieldPanel());
         panel.setBorder(new EmptyBorder(0, 0, 35, 0));
         registerButton = new Button("Register");
+        registerButton.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
         ButtonHandler handler = new ButtonHandler();
         registerButton.getButton().addActionListener(handler);
         tfPanel.add(Box.createRigidArea(new Dimension(0, 30)));

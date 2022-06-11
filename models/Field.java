@@ -21,6 +21,7 @@ public class Field extends JPanel{ //model class for textfields
         textfieldPanel.setLayout(new BoxLayout(textfieldPanel, BoxLayout.PAGE_AXIS));
         textfieldPanel.setBackground(constants.getPrimaryColor());
         JLabel textfieldLabel = new JLabel(label);
+        textfieldLabel.setForeground(constants.getFontColor());
         textfieldPanel.add(textfieldLabel);
         textfield = new JTextField(40);
         textfield.setMaximumSize(new Dimension(textfield.getPreferredSize()));
@@ -29,8 +30,8 @@ public class Field extends JPanel{ //model class for textfields
         textfield.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("#565656")));
         try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, Text.class.getResourceAsStream("../Assets/Fonts/VarelaRound-Regular.TTF"));
-            textfield.setFont(font.deriveFont(Font.PLAIN, 12f));
-            textfieldLabel.setFont(font.deriveFont(Font.PLAIN, 14f));
+            textfield.setFont(font.deriveFont(Font.PLAIN, 14f));
+            textfieldLabel.setFont(font.deriveFont(Font.PLAIN, 15f));
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -42,6 +43,10 @@ public class Field extends JPanel{ //model class for textfields
 
     public JTextField getTextfield() {
         return textfield;
+    }
+
+    public void setTextfield(JTextField textfield) {
+        this.textfield = textfield;
     }
 
     public String getLabel() {
