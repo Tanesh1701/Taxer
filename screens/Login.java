@@ -52,7 +52,7 @@ public class Login extends JPanel{
         
 
         Text getStarted = new Text("Don't have an account yet? Get started", 12);
-        Text here = new Text("here", 12);
+        Text here = new Text("here.", 12);
         here.getTitle().setForeground(constants.getSecondaryColor());
         here.getTitle().addMouseListener(handler);
         here.getTitle().setCursor(new Cursor(Cursor.HAND_CURSOR));
