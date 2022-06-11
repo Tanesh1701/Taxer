@@ -10,7 +10,7 @@ public class Button extends JButton {
     public Button(String buttonText) {
         button = new JButton(buttonText);
         button.setOpaque(true);
-        button.setPreferredSize(new Dimension(50,40));
+        button.setPreferredSize(new Dimension(60,40));
         button.setBackground(constants.getSecondaryColor());
         button.setForeground(constants.getPrimaryColor());
         button.addMouseListener(new java.awt.event.MouseAdapter() {

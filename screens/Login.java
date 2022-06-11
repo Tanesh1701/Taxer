@@ -3,13 +3,18 @@ import javax.swing.*;
 import java.awt.Dimension;
 import javax.swing.border.EmptyBorder;
 import models.Field;
-import models.Title;
+import models.Text;
 import models.Button;
 import models.Constants;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.font.TextAttribute;
+import java.util.Map;
 
 public class Login extends JPanel{
 
-    private Title header = new Title("Login");
+    private Text header = new Text("Login", 18);
     private JPanel panel = new JPanel();
     private JPanel headerPanel = new JPanel();
     private JPanel tfPanel = new JPanel();
@@ -23,29 +28,70 @@ public class Login extends JPanel{
         headerPanel.setBackground(constants.getPrimaryColor());
 
         panel.setBackground(constants.getPrimaryColor());
-        panel.setBorder(new EmptyBorder(30, 0, 80, 0));
 
         Field textFieldUsername = new Field("Username");
         Field textFieldPassword = new Field("Password");
 
         tfPanel.setBorder(new EmptyBorder(0, -200, 120, 0));
         tfPanel.setLayout(new BoxLayout(tfPanel, BoxLayout.PAGE_AXIS));
-
+        tfPanel.setBackground(constants.getPrimaryColor());
         tfPanel.add(headerPanel);
+        tfPanel.add(Box.createRigidArea(new Dimension(0,100)));
         tfPanel.add(textFieldUsername.getTextfieldPanel());
-        tfPanel.add(Box.createRigidArea(new Dimension(0, 40)));
+        tfPanel.add(Box.createRigidArea(new Dimension(0, 60)));
         tfPanel.add(textFieldPassword.getTextfieldPanel());
 
+        ButtonHandler handler = new ButtonHandler();
+
         Button loginBtn = new Button("Login");
-        //tfPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        loginBtn.getButton().setPreferredSize(new Dimension(80,40));
+        JPanel containerBtn = new JPanel();
+        containerBtn.setBackground(Color.WHITE);        
+        containerBtn.add(loginBtn.getButton());
+        
+
+        Text getStarted = new Text("Don't have an account yet? Get started", 12);
+        Text here = new Text("here", 12);
+        here.getTitle().setForeground(constants.getSecondaryColor());
+        here.getTitle().addMouseListener(handler);
+        Font font = here.getTitle().getFont();
+
+        @SuppressWarnings("unchecked") 
+        Map<TextAttribute, Integer> attributes = (Map<TextAttribute, Integer>) font.getAttributes();
+        
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        here.getTitle().setFont(font.deriveFont(attributes));
+        JPanel containerContinue = new JPanel();
+        containerContinue.setBackground(Color.WHITE);
+        containerContinue.add(getStarted.getTitle());
+        containerContinue.add(here.getTitle());
 
         panel.add(tfPanel);
-        panel.add(Box.createRigidArea(new Dimension(117, 0)));
-        panel.add(loginBtn.getButton());
-        //panel.add(new JLabel("Register Here"));
-
-        tfPanel.setBackground(constants.getPrimaryColor());
+        panel.add(containerBtn);
+        panel.add(Box.createRigidArea(new Dimension(0,20)));
+        panel.add(containerContinue);
         panel.setVisible(true);
+    }
+
+    private class ButtonHandler implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            CardLayout cl = (CardLayout) (Main.getCards().getLayout());
+            cl.show(Main.getCards(), "Register");
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {}
+
+        @Override
+        public void mouseReleased(MouseEvent e) {}
+
+        @Override
+        public void mouseEntered(MouseEvent e) {}
+
+        @Override
+        public void mouseExited(MouseEvent e) {}
     }
 
     public JPanel getPanel(){

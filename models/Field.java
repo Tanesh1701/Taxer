@@ -28,7 +28,7 @@ public class Field extends JPanel{ //model class for textfields
         textfield.setForeground(constants.getFontColor());
         textfield.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("#565656")));
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, Title.class.getResourceAsStream("../Assets/Fonts/VarelaRound-Regular.TTF"));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Text.class.getResourceAsStream("../Assets/Fonts/VarelaRound-Regular.TTF"));
             textfield.setFont(font.deriveFont(Font.PLAIN, 12f));
             textfieldLabel.setFont(font.deriveFont(Font.PLAIN, 14f));
         } catch (Exception e) {

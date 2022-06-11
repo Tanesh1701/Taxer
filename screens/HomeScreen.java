@@ -3,7 +3,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import models.Button;
 import models.Constants;
-import models.Title;
+import models.Text;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.*;
@@ -16,7 +16,7 @@ public class HomeScreen extends JPanel{
 
     public HomeScreen() {
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        Title homeScreenHeader = new Title("Welcome to Taxer");
+        Text homeScreenHeader = new Text("Welcome to Taxer", 18);
         getStartedBtn = new Button("Get Started");
         ButtonHandler handler = new ButtonHandler();
         getStartedBtn.getButton().addActionListener(handler);

@@ -8,13 +8,13 @@ import javax.swing.border.EmptyBorder;
 import models.Button;
 import models.Constants;
 import models.Field;
-import models.Title;
+import models.Text;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Register extends JPanel{
-    private Title header = new Title("Register Now");
+    private Text header = new Text("Register Now", 18);
     private JPanel panel = new JPanel();
     private JPanel headerPanel = new JPanel();
     private JPanel tfPanel = new JPanel();
