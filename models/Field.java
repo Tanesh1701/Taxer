@@ -22,8 +22,12 @@ public class Field extends JPanel{ //model class for textfields
         textfieldPanel.setBackground(constants.getPrimaryColor());
         JLabel textfieldLabel = new JLabel(label);
         textfieldLabel.setForeground(constants.getFontColor());
+        textfieldLabel.setHorizontalAlignment(JLabel.CENTER);
+        textfieldLabel.setVerticalAlignment(JLabel.CENTER);
         textfieldPanel.add(textfieldLabel);
         textfield = new JTextField(40);
+        textfield.setHorizontalAlignment(JTextField.CENTER);
+        //textfield.setVerticalAlignment(JTextField.CENTER);
         textfield.setMaximumSize(new Dimension(textfield.getPreferredSize()));
         textfield.setBackground(constants.getPrimaryColor());
         textfield.setForeground(constants.getFontColor());

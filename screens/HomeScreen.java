@@ -16,7 +16,8 @@ public class HomeScreen extends JPanel{
 
     public HomeScreen() {
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        Text homeScreenHeader = new Text("Welcome to Taxer", 18);
+        Text homeScreenHeader = new Text("Taxer", 18);
+        homeScreenHeader.getTitle().setForeground(constants.getSecondaryColor());
         getStartedBtn = new Button("Get Started");
         ButtonHandler handler = new ButtonHandler();
         getStartedBtn.getButton().addActionListener(handler);
@@ -30,7 +31,7 @@ public class HomeScreen extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             CardLayout cl = (CardLayout) (Main.getCards().getLayout());
-            cl.show(Main.getCards(), "Register");
+            cl.show(Main.getCards(), "Login");
         }
     }
 

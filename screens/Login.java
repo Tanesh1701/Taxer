@@ -1,6 +1,8 @@
 package screens;
 import javax.swing.*;
 import java.awt.Dimension;
+
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import models.Field;
 import models.Text;
@@ -11,6 +13,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.util.Map;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Login extends JPanel{
 

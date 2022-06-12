@@ -17,8 +17,8 @@ public class Main extends JFrame{
         Register register = new Register();
         HomeScreen homeScreen = new HomeScreen();
         Login login = new Login();
-        cards.add(login.getPanel(), "Login");
         cards.add(homeScreen.getMainPanel(), "HomeScreen");
+        cards.add(login.getPanel(), "Login");
         cards.add(register.getPanel(), "Register");
         cards.setOpaque(true);
         add(cards);
