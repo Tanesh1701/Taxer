@@ -6,12 +6,13 @@ import java.awt.*;
 
 public class Main extends JFrame{
     static JPanel cards;
+    static JFrame frame =  new JFrame();
     private CardLayout cardLayout;
 
     public Main() {
-        super("Taxer");
+        frame.setTitle("Taxer");
         ImageIcon img = new ImageIcon(getClass().getResource("../Assets/Logo/1024.png"));
-        setIconImage(img.getImage());
+        frame.setIconImage(img.getImage());
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
         Register register = new Register();
@@ -21,14 +22,18 @@ public class Main extends JFrame{
         cards.add(login.getPanel(), "Login");
         cards.add(register.getPanel(), "Register");
         cards.setOpaque(true);
-        add(cards);
-        setSize(750,600);
-        setResizable(false);
-        setVisible(true);
+        frame.add(cards);
+        frame.setSize(750,600);
+        //setResizable(false);
+        frame.setVisible(true);
     }
 
     public static JPanel getCards() {
         return cards;
+    }
+
+    public static JFrame getFrame() {
+        return frame;
     }
 
     public static void main(String[] args) {

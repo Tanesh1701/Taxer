@@ -50,6 +50,11 @@ public class Login extends JPanel{
         Button loginBtn = new Button("Login");
         loginBtn.getButton().setPreferredSize(new Dimension(80,40));
         loginBtn.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        loginBtn.getButton().addActionListener(e -> {
+            Main.getFrame().dispose();
+            Dashboard dashboard = new Dashboard();
+            dashboard.setVisible(true);
+        });
         JPanel containerBtn = new JPanel();
         containerBtn.setBackground(Color.WHITE);        
         containerBtn.add(loginBtn.getButton());
@@ -75,11 +80,18 @@ public class Login extends JPanel{
         containerContinue.add(here.getTitle());
 
         panel.add(tfPanel);
-        panel.add(containerBtn); //adding to a new panel and then adding to the main panel centers component automatically
+        panel.add(containerBtn, BorderLayout.SOUTH); //adding to a new panel and then adding to the main panel centers component automatically
         panel.add(Box.createRigidArea(new Dimension(0,20)));
         panel.add(containerContinue);
         panel.setVisible(true);
     }
+
+    // private class ButtonClick implements ActionListener{
+    //     @Override
+    //     public void actionPerformed(ActionEvent e) {
+
+    //     }
+    // }
 
     private class ButtonHandler implements MouseListener { //mouse listener takes in mandatory all mouse events
 

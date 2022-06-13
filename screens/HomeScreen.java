@@ -1,6 +1,8 @@
 package screens;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+
 import models.Button;
 import models.Constants;
 import models.Text;
@@ -15,14 +17,15 @@ public class HomeScreen extends JPanel{
     Button getStartedBtn;
 
     public HomeScreen() {
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        //mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.setLayout(new BorderLayout());
         Text homeScreenHeader = new Text("Taxer", 18);
         homeScreenHeader.getTitle().setForeground(constants.getSecondaryColor());
         getStartedBtn = new Button("Get Started");
         ButtonHandler handler = new ButtonHandler();
         getStartedBtn.getButton().addActionListener(handler);
-        mainPanel.add(homeScreenHeader.getTitle());
-        mainPanel.add(getStartedBtn.getButton());
+        mainPanel.add(homeScreenHeader.getTitle(), BorderLayout.NORTH);
+        mainPanel.add(getStartedBtn.getButton(), BorderLayout.SOUTH);
         mainPanel.setVisible(true);
         mainPanel.setBackground(constants.getPrimaryColor());
     }
@@ -35,7 +38,7 @@ public class HomeScreen extends JPanel{
         }
     }
 
-    public JPanel getMainPanel() {
+    public  JPanel getMainPanel() {
         return mainPanel;
     }
 }

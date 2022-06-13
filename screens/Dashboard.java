@@ -18,12 +18,12 @@ public class Dashboard extends JFrame{
     JPanel calculatorPanel = new JPanel();
     JPanel settingsPanel = new JPanel();
     JPanel logoutPanel = new JPanel();
+    static JFrame  dashboardFrame = new JFrame();
 
     public Dashboard() {
-        super("Dashboard");
-        setLocationRelativeTo(null);
+        dashboardFrame.setTitle("Dashboard");
 
-        this.setLayout(new BorderLayout());
+        dashboardFrame.setLayout(new BorderLayout());
 
         menuPanel.setBackground(Color.decode("#5200ff"));
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
@@ -42,7 +42,7 @@ public class Dashboard extends JFrame{
 
        
         JLabel taxLabel = new JLabel("Hello Tax");
-        taxForm.setPreferredSize(new Dimension(650,650));
+        //taxForm.setPreferredSize(new Dimension(650,650));
         taxForm.add(taxLabel);
 
        
@@ -79,12 +79,13 @@ public class Dashboard extends JFrame{
 
         addActionToMenuLabels();
 
-        add(menuPanel, BorderLayout.WEST);
-        add(containerPanel, BorderLayout.CENTER);
+        dashboardFrame.add(menuPanel, BorderLayout.WEST);
+        dashboardFrame.add(containerPanel, BorderLayout.CENTER);
 
-        setVisible(true);
-        setSize(750, 600);
-        setResizable(false);
+        dashboardFrame.setSize(750, 600);
+        dashboardFrame.setVisible(true);
+        dashboardFrame.setLocation(null);
+        //setResizable(false);
     }
 
     public void setLabelBackround(JLabel label)
@@ -160,8 +161,11 @@ public class Dashboard extends JFrame{
                                    break;
                                    
                                    case "Logout":
-                                   showPanel(logoutPanel);
-                                   logoutPanel.setBackground(Color.GREEN);
+                                //    showPanel(logoutPanel);
+                                //    logoutPanel.setBackground(Color.GREEN);
+                                      Dashboard.getDashboardFrame().dispose();
+                                    //   CardLayout cl = (CardLayout) (Main.getCards().getLayout());
+                                    //   cl.show(Main.getCards(), "Register");
                                    break;
                                    
                     }
@@ -196,7 +200,8 @@ public class Dashboard extends JFrame{
             }
         }
     }
-    public static void main(String[] args) {
-        Dashboard d = new Dashboard();
+
+    public static JFrame getDashboardFrame() {
+        return dashboardFrame;
     }
 }

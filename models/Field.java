@@ -2,12 +2,13 @@ package models;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
-import javax.swing.BorderFactory;
+import javax.swing.*;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.*;
 
 public class Field extends JPanel{ //model class for textfields
     private JTextField textfield;
