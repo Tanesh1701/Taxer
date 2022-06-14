@@ -1,6 +1,8 @@
 package screens;
 import javax.swing.*;
 import java.awt.Dimension;
+
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import models.Field;
 import models.Text;
@@ -81,6 +83,7 @@ public class Login extends JPanel{
         panel.add(containerContinue);
         panel.setVisible(true);
     }
+
 
     // private class ButtonClick implements ActionListener{
     //     @Override

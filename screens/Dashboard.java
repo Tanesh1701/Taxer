@@ -2,8 +2,9 @@ package screens;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
 import models.Text;
 import java.awt.*;
 
@@ -26,11 +27,17 @@ public class Dashboard extends JFrame{
 
         dashboardFrame.setLayout(new BorderLayout());
 
-        // JFileChooser imageChooser = new JFileChooser();
-        // imageChooser.showSaveDialog(null);
-        // JPanel imageAvatar = new JPanel();
-        // imageAvatar.setPreferredSize(new Dimension(20,50));
-        // imageAvatar.setBackground(Color.WHITE);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.fill = GridBagConstraints.BOTH;
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        LocalDateTime currentTime = LocalDateTime.now();
+        Text time  = new Text((dtf.format(currentTime)), 12);
+        time.getTitle().setForeground(Color.white);
 
         menuPanel.setBackground(Color.decode("#5200ff"));
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
@@ -38,20 +45,20 @@ public class Dashboard extends JFrame{
 
         Text username = new Text("Tanesh Chuckowree", 14);
         username.getTitle().setForeground(Color.WHITE);
-        //menuPanel.add(imageAvatar);
+        menuPanel.add(time.getTitle());
         menuPanel.add(username.getTitle());
         menuPanel.add(Box.createRigidArea(new Dimension(0,100)));
 
-        containerPanel.setBackground(Color.WHITE);
-        containerPanel.setPreferredSize(new Dimension(700, 500));
+        containerPanel.setLayout(new GridBagLayout());
 
-        JLabel homeLabel = new JLabel("Hello Home");
-        homePanel.add(homeLabel);
+        JLabel homelabel = new JLabel("Hello Home");
+        homePanel.add(homelabel);
 
        
         JLabel taxLabel = new JLabel("Hello Tax");
-        //taxForm.setPreferredSize(new Dimension(650,650));
-        taxForm.add(taxLabel);
+        taxForm.setLayout(new BorderLayout());
+        taxForm.add(taxLabel, BorderLayout.NORTH);
+        taxForm.add(time.getTitle(), BorderLayout.SOUTH);
 
        
         JLabel calculatorLabel = new JLabel("Hello Calculator");
@@ -80,7 +87,7 @@ public class Dashboard extends JFrame{
         panels[4] = logoutPanel;
 
         for(int i = 0; i < panels.length; i++) {
-            containerPanel.add(panels[i], BorderLayout.CENTER);
+            containerPanel.add(panels[i], gbc);
         }
 
         containerPanel.setVisible(false);
@@ -93,7 +100,7 @@ public class Dashboard extends JFrame{
         dashboardFrame.setSize(750, 600);
         dashboardFrame.setVisible(true);
         dashboardFrame.setLocation(null);
-        //setResizable(false);
+        dashboardFrame.pack();
     }
 
     public void setLabelBackround(JLabel label)
@@ -151,6 +158,7 @@ public class Dashboard extends JFrame{
                         switch (label.getText().trim()){
                             case "Home":
                                 showPanel(homePanel);
+                                homePanel.setBackground(Color.CYAN);
                                 break;
                                    
                             case "Tax Return":

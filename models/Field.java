@@ -14,21 +14,19 @@ public class Field extends JPanel{ //model class for textfields
     private JTextField textfield;
     private JPanel textfieldPanel;
     private String label;
+    private JLabel textfieldLabel;
     Constants constants = new Constants();
 
     public Field(String label) {
         this.label = label;
         textfieldPanel = new JPanel();
+        textfieldPanel.setLayout(new GridLayout(2,1));
         textfieldPanel.setLayout(new BoxLayout(textfieldPanel, BoxLayout.PAGE_AXIS));
         textfieldPanel.setBackground(constants.getPrimaryColor());
-        JLabel textfieldLabel = new JLabel(label);
+        textfieldLabel = new JLabel(label);
         textfieldLabel.setForeground(constants.getFontColor());
-        textfieldLabel.setHorizontalAlignment(JLabel.CENTER);
-        textfieldLabel.setVerticalAlignment(JLabel.CENTER);
         textfieldPanel.add(textfieldLabel);
         textfield = new JTextField(40);
-        textfield.setHorizontalAlignment(JTextField.CENTER);
-        //textfield.setVerticalAlignment(JTextField.CENTER);
         textfield.setMaximumSize(new Dimension(textfield.getPreferredSize()));
         textfield.setBackground(constants.getPrimaryColor());
         textfield.setForeground(constants.getFontColor());
@@ -40,7 +38,7 @@ public class Field extends JPanel{ //model class for textfields
         } catch (Exception e) {
             System.out.println(e);
         }
-        textfieldPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+        textfieldPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         textfieldPanel.add(textfield);
         textfieldPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         textfieldPanel.setVisible(true);
@@ -60,6 +58,14 @@ public class Field extends JPanel{ //model class for textfields
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public JLabel getTextfieldLabel() {
+        return textfieldLabel;
+    }
+
+    public void setTextfieldLabel(JLabel textfieldLabel) {
+        this.textfieldLabel = textfieldLabel;
     }
 
     public JPanel getTextfieldPanel() {
