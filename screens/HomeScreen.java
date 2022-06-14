@@ -1,8 +1,5 @@
 package screens;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
-
 import models.Button;
 import models.Constants;
 import models.Text;

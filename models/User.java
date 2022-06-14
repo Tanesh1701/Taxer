@@ -7,14 +7,6 @@ public class User {
     private String email;
     private String password;
 
-    public User (int id, String fullName, String userName, String email, String password) {
-        this.id = id;
-        this.fullName = fullName;
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-    }
-
     public int getId() {
         return id;
     }

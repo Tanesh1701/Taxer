@@ -1,8 +1,6 @@
 package screens;
 import javax.swing.*;
 import java.awt.Dimension;
-
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import models.Field;
 import models.Text;
@@ -13,8 +11,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.util.Map;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Login extends JPanel{
 
@@ -81,7 +77,7 @@ public class Login extends JPanel{
 
         panel.add(tfPanel);
         panel.add(containerBtn, BorderLayout.SOUTH); //adding to a new panel and then adding to the main panel centers component automatically
-        panel.add(Box.createRigidArea(new Dimension(0,20)));
+        panel.add(Box.createRigidArea(new Dimension(0,40)));
         panel.add(containerContinue);
         panel.setVisible(true);
     }

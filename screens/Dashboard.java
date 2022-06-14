@@ -3,11 +3,12 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import models.Text;
 import java.awt.*;
 
 public class Dashboard extends JFrame{
-    String menuItems[] = {"Home", "Tax Return", "Calculator", "Settings", "Logout"};
+    String menuItems[] = {"Home", "Tax Return", "Calculator", "Settings", "Exit"};
     JLabel[] menuLabels = new JLabel[5];
     JPanel[] panels = new JPanel[5];
     JPanel avatarPanel = new JPanel();
@@ -25,12 +26,19 @@ public class Dashboard extends JFrame{
 
         dashboardFrame.setLayout(new BorderLayout());
 
+        // JFileChooser imageChooser = new JFileChooser();
+        // imageChooser.showSaveDialog(null);
+        // JPanel imageAvatar = new JPanel();
+        // imageAvatar.setPreferredSize(new Dimension(20,50));
+        // imageAvatar.setBackground(Color.WHITE);
+
         menuPanel.setBackground(Color.decode("#5200ff"));
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setPreferredSize(new Dimension(200, 100));
 
         Text username = new Text("Tanesh Chuckowree", 14);
         username.getTitle().setForeground(Color.WHITE);
+        //menuPanel.add(imageAvatar);
         menuPanel.add(username.getTitle());
         menuPanel.add(Box.createRigidArea(new Dimension(0,100)));
 
@@ -142,59 +150,45 @@ public class Dashboard extends JFrame{
                        // using the showPanel function
                         switch (label.getText().trim()){
                             case "Home":
-                                   showPanel(homePanel);
-                                   break;
+                                showPanel(homePanel);
+                                break;
                                    
                             case "Tax Return":
-                                   showPanel(taxForm);
-                                   taxForm.setBackground(Color.red);
-                                   break;
+                                showPanel(taxForm);
+                                taxForm.setBackground(Color.red);
+                                break;
                                    
                             case "Calculator":
-                                   showPanel(calculatorPanel);
-                                   calculatorPanel.setBackground(Color.BLUE);
-                                   break;
+                                showPanel(calculatorPanel);
+                                calculatorPanel.setBackground(Color.BLUE);
+                                break;
                                    
-                                   case "Settings":
-                                   showPanel(settingsPanel);
-                                   settingsPanel.setBackground(Color.GRAY);
-                                   break;
+                            case "Settings":
+                                showPanel(settingsPanel);
+                                settingsPanel.setBackground(Color.GRAY);
+                                break;
                                    
-                                   case "Logout":
-                                //    showPanel(logoutPanel);
-                                //    logoutPanel.setBackground(Color.GREEN);
-                                      Dashboard.getDashboardFrame().dispose();
-                                    //   CardLayout cl = (CardLayout) (Main.getCards().getLayout());
-                                    //   cl.show(Main.getCards(), "Register");
-                                   break;
+                            case "Exit":
+                                Dashboard.getDashboardFrame().dispose();
+                                break;
                                    
                     }
                         
                 }
 
                     @Override
-                    public void mousePressed(MouseEvent e) {
-                     }
+                    public void mousePressed(MouseEvent e) {}
 
                     @Override
-                    public void mouseReleased(MouseEvent e) {
-                      }
+                    public void mouseReleased(MouseEvent e) {}
 
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                        // on the mouse entred event
-                        // set the border to yellow
-                        
-                        
-                      }
+                        setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    }
 
                     @Override
-                    public void mouseExited(MouseEvent e) {
-                        // on the mouse exited event
-                        // reset to the default border
-                        
-                        
-                      }
+                    public void mouseExited(MouseEvent e) {}
                 });
                 
             }

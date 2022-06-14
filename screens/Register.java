@@ -23,10 +23,12 @@ public class Register extends JPanel{
 
     public Register() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        headerPanel.add(header.getTitle());
-        headerPanel.setBorder(new EmptyBorder(0, 250, 0, 0)); //make title center
-        headerPanel.setBackground(constants.getPrimaryColor());
         panel.setBackground(Color.white);
+
+        headerPanel.add(header.getTitle());
+        headerPanel.setBorder(new EmptyBorder(0, 200, 0, 0)); //make title center
+        headerPanel.setBackground(constants.getPrimaryColor());
+        
         Field textfieldFullName = new Field("Full Name:");
         Field textfieldUserName = new Field("Username:");
         Field textfieldEmail = new Field("Email:");
@@ -41,14 +43,20 @@ public class Register extends JPanel{
         tfPanel.add(textfieldEmail.getTextfieldPanel());
         tfPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         tfPanel.add(textfieldPassword.getTextfieldPanel());
-        panel.setBorder(new EmptyBorder(0, 0, 35, 0));
+
+
         registerButton = new Button("Register");
         registerButton.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        registerButton.getButton().setPreferredSize(new Dimension(100,40));
         ButtonHandler handler = new ButtonHandler();
         registerButton.getButton().addActionListener(handler);
+        JPanel containerBtn = new JPanel();
+        containerBtn.setBackground(Color.WHITE);        
+        containerBtn.add(registerButton.getButton());
+
         tfPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         panel.add(tfPanel);
-        panel.add(registerButton.getButton());
+        panel.add(containerBtn);
         tfPanel.setBackground(constants.getPrimaryColor());
         panel.setVisible(true);
     }
