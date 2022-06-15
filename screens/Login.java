@@ -1,5 +1,7 @@
 package screens;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.Dimension;
 import models.Field;
 import models.Text;
@@ -27,7 +29,6 @@ public class Login extends JPanel{
 
         panel.setBackground(constants.getPrimaryColor());
         tfPanel.setBackground(constants.getPrimaryColor());
-
 
         tfPanel.setLayout(new GridBagLayout());             //changements till line 52
         GridBagConstraints gbc = new GridBagConstraints();

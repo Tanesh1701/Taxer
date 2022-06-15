@@ -1,20 +1,14 @@
 package screens;
+import models.*;
+import java.awt.*;
+import javax.swing.*;
+import models.Button;
 import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import Database.UserDaoAccesser;
-import models.Button;
-import models.Constants;
-import models.Field;
-import models.Text;
-import models.User;
-import java.awt.*;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import Database.UserDaoAccesser;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Register extends JPanel{
     private Text header = new Text("Register Now", 18);
@@ -35,25 +29,34 @@ public class Register extends JPanel{
         panel.setBackground(Color.white);
 
         headerPanel.add(header.getTitle());
-        headerPanel.setBorder(new EmptyBorder(0, 200, 0, 0)); //make title center
         headerPanel.setBackground(constants.getPrimaryColor());
-        
+
+        tfPanel.setLayout(new GridBagLayout());     
+        tfPanel.setBackground(constants.getPrimaryColor());  
+        GridBagConstraints gbc = new GridBagConstraints();
+
         textfieldFullName = new Field("Full Name:");
         textfieldUserName = new Field("Username:");
         textfieldEmail = new Field("Email:");
         textfieldPassword = new Field("Password:");
 
-        tfPanel.setBorder(new EmptyBorder(0, -250, 0, 0));
-        tfPanel.setLayout(new BoxLayout(tfPanel, BoxLayout.PAGE_AXIS));
-        tfPanel.add(headerPanel);
-        tfPanel.add(textfieldFullName.getTextfieldPanel());
-        tfPanel.add(Box.createRigidArea(new Dimension(0, 40))); //create some space between elements
-        tfPanel.add(textfieldUserName.getTextfieldPanel());
-        tfPanel.add(Box.createRigidArea(new Dimension(0, 40)));
-        tfPanel.add(textfieldEmail.getTextfieldPanel());
-        tfPanel.add(Box.createRigidArea(new Dimension(0, 40)));
-        tfPanel.add(textfieldPassword.getTextfieldPanel());
+        gbc.insets = new Insets(0, 0, 30, 0);
 
+        gbc.gridx = 0; 
+        gbc.gridy = 1; 
+        tfPanel.add(textfieldFullName.getTextfieldPanel(), gbc);
+        
+        gbc.gridx = 0; 
+        gbc.gridy = 2; 
+        tfPanel.add(textfieldUserName.getTextfieldPanel(), gbc);
+        
+        gbc.gridx = 0; 
+        gbc.gridy = 3; 
+        tfPanel.add(textfieldEmail.getTextfieldPanel(), gbc);
+        
+        gbc.gridx = 0; 
+        gbc.gridy = 4; 
+        tfPanel.add(textfieldPassword.getTextfieldPanel(), gbc);      
 
         registerButton = new Button("Register");
         registerButton.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -64,10 +67,9 @@ public class Register extends JPanel{
         containerBtn.setBackground(Color.WHITE);        
         containerBtn.add(registerButton.getButton());
 
-        tfPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        panel.add(headerPanel);
         panel.add(tfPanel);
         panel.add(containerBtn);
-        tfPanel.setBackground(constants.getPrimaryColor());
         panel.setVisible(true);
     }
 
