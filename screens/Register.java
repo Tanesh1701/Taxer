@@ -5,12 +5,16 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Database.UserDaoAccesser;
 import models.Button;
 import models.Constants;
 import models.Field;
 import models.Text;
+import models.User;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Register extends JPanel{
@@ -20,6 +24,12 @@ public class Register extends JPanel{
     private JPanel tfPanel = new JPanel();
     Button registerButton;
     Constants constants = new Constants();
+    User user = new User();
+    UserDaoAccesser uda = new UserDaoAccesser();
+    Field textfieldFullName;
+    Field textfieldUserName;
+    Field textfieldEmail;
+    Field textfieldPassword;
 
     public Register() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -29,10 +39,11 @@ public class Register extends JPanel{
         headerPanel.setBorder(new EmptyBorder(0, 200, 0, 0)); //make title center
         headerPanel.setBackground(constants.getPrimaryColor());
         
-        Field textfieldFullName = new Field("Full Name:");
-        Field textfieldUserName = new Field("Username:");
-        Field textfieldEmail = new Field("Email:");
-        Field textfieldPassword = new Field("Password:");
+        textfieldFullName = new Field("Full Name:");
+        textfieldUserName = new Field("Username:");
+        textfieldEmail = new Field("Email:");
+        textfieldPassword = new Field("Password:");
+
         tfPanel.setBorder(new EmptyBorder(0, -250, 0, 0));
         tfPanel.setLayout(new BoxLayout(tfPanel, BoxLayout.PAGE_AXIS));
         tfPanel.add(headerPanel);
@@ -64,7 +75,18 @@ public class Register extends JPanel{
     private class ButtonHandler implements ActionListener {
         
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
+            user.setFullName(textfieldFullName.getTextfield().getText());
+            user.setUserName(textfieldUserName.getTextfield().getText());
+            user.setEmail(textfieldEmail.getTextfield().getText());
+            user.setPassword(textfieldPassword.getTextfield().getText());
+
+            try {
+                uda.insert(user);
+            } catch (SQLException exception) {
+                System.out.println(exception);
+            }
+
             CardLayout cl = (CardLayout) (Main.getCards().getLayout());
             cl.show(Main.getCards(), "HomeScreen");
         }
