@@ -25,7 +25,7 @@ public class Register extends JPanel{
     Button registerButton;
     Constants constants = new Constants();
     User user = new User();
-    UserDaoAccesser uda = new UserDaoAccesser();
+    UserDaoAccesser uda = new UserDaoAccesser(); // To do as login
     Field textfieldFullName;
     Field textfieldUserName;
     Field textfieldEmail;
@@ -72,7 +72,7 @@ public class Register extends JPanel{
         panel.setVisible(true);
     }
 
-    private class ButtonHandler implements ActionListener {
+    private class ButtonHandler implements ActionListener { // same for login
         
         @Override
         public void actionPerformed(ActionEvent e){
@@ -82,7 +82,7 @@ public class Register extends JPanel{
             user.setPassword(textfieldPassword.getTextfield().getText());
 
             try {
-                uda.insert(user);
+                uda.insert(user); //use get instead ;)
             } catch (SQLException exception) {
                 System.out.println(exception);
             }

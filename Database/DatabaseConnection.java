@@ -23,3 +23,9 @@ public class DatabaseConnection {
         return connection;
     }
 }
+
+// Singleton pattern
+
+// class Animal() {int id;}
+
+//in main => Animal dog = new Animal();  Animal cat = new Animal();
