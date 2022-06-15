@@ -1,9 +1,6 @@
 package screens;
 import javax.swing.*;
 import java.awt.Dimension;
-
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import models.Field;
 import models.Text;
 import models.Button;
@@ -26,23 +23,23 @@ public class Login extends JPanel{
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
         headerPanel.add(header.getTitle());
-        headerPanel.setBorder(new EmptyBorder(0, 200, 0, 0));
         headerPanel.setBackground(constants.getPrimaryColor());
 
         panel.setBackground(constants.getPrimaryColor());
+        tfPanel.setBackground(constants.getPrimaryColor());
+
+
+        tfPanel.setLayout(new GridBagLayout());             //changements till line 52
+        GridBagConstraints gbc = new GridBagConstraints();
 
         Field textFieldUsername = new Field("Username");
         Field textFieldPassword = new Field("Password");
 
-        tfPanel.setBorder(new EmptyBorder(0, -200, 120, 0));
-        tfPanel.setLayout(new BoxLayout(tfPanel, BoxLayout.PAGE_AXIS));
-        tfPanel.setBackground(constants.getPrimaryColor());
-        tfPanel.add(headerPanel);
-        tfPanel.add(Box.createRigidArea(new Dimension(0,100)));
-        tfPanel.add(textFieldUsername.getTextfieldPanel());
-        tfPanel.add(Box.createRigidArea(new Dimension(0, 60)));
-        tfPanel.add(textFieldPassword.getTextfieldPanel());
+        gbc.insets = new Insets(0, 0, 60, 0);
 
+        gbc.gridx = 0; gbc.gridy = 1; tfPanel.add(textFieldUsername.getTextfieldPanel(), gbc);
+        gbc.gridx = 0; gbc.gridy = 2; tfPanel.add(textFieldPassword.getTextfieldPanel(), gbc);
+        
         ButtonHandler handler = new ButtonHandler();
 
         Button loginBtn = new Button("Login");
@@ -77,20 +74,14 @@ public class Login extends JPanel{
         containerContinue.add(getStarted.getTitle());
         containerContinue.add(here.getTitle());
 
+        panel.add(headerPanel);
         panel.add(tfPanel);
-        panel.add(containerBtn, BorderLayout.SOUTH); //adding to a new panel and then adding to the main panel centers component automatically
-        panel.add(Box.createRigidArea(new Dimension(0,40)));
+        panel.add(containerBtn); //adding to a new panel and then adding to the main panel centers component automatically
+        panel.add(Box.createRigidArea(new Dimension(0,20)));
         panel.add(containerContinue);
         panel.setVisible(true);
     }
 
-
-    // private class ButtonClick implements ActionListener{
-    //     @Override
-    //     public void actionPerformed(ActionEvent e) {
-
-    //     }
-    // }
 
     private class ButtonHandler implements MouseListener { //mouse listener takes in mandatory all mouse events
 

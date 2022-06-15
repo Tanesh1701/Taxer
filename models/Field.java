@@ -26,8 +26,7 @@ public class Field extends JPanel{ //model class for textfields
         textfieldLabel = new JLabel(label);
         textfieldLabel.setForeground(constants.getFontColor());
         textfieldPanel.add(textfieldLabel);
-        textfield = new JTextField(40);
-        textfield.setMaximumSize(new Dimension(textfield.getPreferredSize()));
+        textfield = new JTextField(18);
         textfield.setBackground(constants.getPrimaryColor());
         textfield.setForeground(constants.getFontColor());
         textfield.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("#565656")));
