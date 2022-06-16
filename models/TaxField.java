@@ -1,6 +1,4 @@
 package models;
-
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.*;
@@ -16,7 +14,7 @@ public class TaxField {
         taxFieldPanel.setBackground(Color.WHITE);
 
         // JLabel textLabel = new JLabel(text);
-        Text taxFieldLabel = new Text(text, 14);
+        Text taxFieldLabel = new Text(text, 12);
 
         taxTextField.setBackground(Color.white);
         taxTextField.setMaximumSize(new Dimension(taxTextField.getPreferredSize()));
@@ -24,7 +22,7 @@ public class TaxField {
 
         try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, Text.class.getResourceAsStream("../Assets/Fonts/VarelaRound-Regular.TTF"));
-            taxTextField.setFont(font.deriveFont(Font.PLAIN, 14f));
+            taxTextField.setFont(font.deriveFont(Font.PLAIN, 12f));
         } catch (Exception e) {
             System.out.println(e);
         }

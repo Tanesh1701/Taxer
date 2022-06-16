@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import models.Text;
+import screens.DashboardScreens.TaxReturn;
+
 import java.awt.*;
 
 public class Dashboard extends JFrame{
@@ -20,6 +22,8 @@ public class Dashboard extends JFrame{
     JPanel calculatorPanel = new JPanel();
     JPanel settingsPanel = new JPanel();
     JPanel logoutPanel = new JPanel();
+
+    TaxReturn taxReturnForm = new TaxReturn();
     static JFrame  dashboardFrame = new JFrame();
 
     public Dashboard() {
@@ -55,10 +59,11 @@ public class Dashboard extends JFrame{
         homePanel.add(homelabel);
 
        
-        JLabel taxLabel = new JLabel("Hello Tax");
-        taxForm.setLayout(new BorderLayout());
-        taxForm.add(taxLabel, BorderLayout.NORTH);
-        taxForm.add(time.getTitle(), BorderLayout.SOUTH);
+        // JLabel taxLabel = new JLabel("Hello Tax");
+        // taxForm.setLayout(new BorderLayout());
+        // taxForm.add(taxLabel, BorderLayout.NORTH);
+        // taxForm.add(time.getTitle(), BorderLayout.SOUTH);
+        
 
        
         JLabel calculatorLabel = new JLabel("Hello Calculator");
@@ -81,7 +86,7 @@ public class Dashboard extends JFrame{
         }
 
         panels[0] = homePanel;
-        panels[1] = taxForm;
+        panels[1] = taxReturnForm.getMainPanel();
         panels[2] = calculatorPanel;
         panels[3] = settingsPanel;
         panels[4] = logoutPanel;
@@ -162,8 +167,8 @@ public class Dashboard extends JFrame{
                                 break;
                                    
                             case "Tax Return":
-                                showPanel(taxForm);
-                                taxForm.setBackground(Color.red);
+                                showPanel(taxReturnForm.getMainPanel());
+                                //taxForm.setBackground(Color.red);
                                 break;
                                    
                             case "Calculator":
