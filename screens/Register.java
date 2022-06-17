@@ -18,7 +18,7 @@ public class Register extends JPanel{
     Button registerButton;
     Constants constants = new Constants();
     User user = new User();
-    UserDaoAccesser uda = new UserDaoAccesser(); // To do as login
+    UserDaoAccesser uda = new UserDaoAccesser();
     Field textfieldFullName;
     Field textfieldUserName;
     Field textfieldEmail;
@@ -73,7 +73,7 @@ public class Register extends JPanel{
         panel.setVisible(true);
     }
 
-    private class ButtonHandler implements ActionListener { // same for login
+    private class ButtonHandler implements ActionListener {
         
         @Override
         public void actionPerformed(ActionEvent e){
@@ -94,16 +94,15 @@ public class Register extends JPanel{
                     if (!(fullname.matches(".*\\d.*"))) {
                         if (email.contains("@gmail.com")) {
                             try {
-                                uda.insert(user); //use get instead ;)
+                                uda.insert(user);
+                                CardLayout cl = (CardLayout) (Main.getCards().getLayout());
+                                cl.show(Main.getCards(), "HomeScreen"); //TODO: Move user directly to dashboard instead
                             } catch (SQLException exception) {
                                 System.out.println(exception);
                             } finally {
                                 errorMsg = new Text("There was an issue in registering you. Please try again in some time or ensure that you have correctly entered your personal details!", 14);
                                 JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
                             }
-                
-                            CardLayout cl = (CardLayout) (Main.getCards().getLayout());
-                            cl.show(Main.getCards(), "HomeScreen"); //TODO: Move user directly to dashboard instead
                         } else {
                             errorMsg = new Text("Your email is invalid!", 14);
                             JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);

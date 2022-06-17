@@ -24,8 +24,3 @@ public class DatabaseConnection {
     }
 }
 
-// Singleton pattern
-
-// class Animal() {int id;}
-
-//in main => Animal dog = new Animal();  Animal cat = new Animal();
