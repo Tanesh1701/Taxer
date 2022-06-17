@@ -77,19 +77,46 @@ public class Register extends JPanel{
         
         @Override
         public void actionPerformed(ActionEvent e){
-            user.setFullName(textfieldFullName.getTextfield().getText());
-            user.setUserName(textfieldUserName.getTextfield().getText());
-            user.setEmail(textfieldEmail.getTextfield().getText());
-            user.setPassword(textfieldPassword.getTextfield().getText());
+            String fullname = textfieldFullName.getTextfield().getText();
+            String username = textfieldUserName.getTextfield().getText();
+            String email = textfieldEmail.getTextfield().getText();
+            String password = textfieldPassword.getTextfield().getText();
+            user.setFullName(fullname);
+            user.setUserName(username);
+            user.setEmail(email);
+            user.setPassword(password);
+            Text errorMsg = new Text("You cannot leave any empty fields!", 14);
 
-            try {
-                uda.insert(user); //use get instead ;)
-            } catch (SQLException exception) {
-                System.out.println(exception);
+            if(fullname.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (password.length() >= 8) {
+                    if (!(fullname.matches(".*\\d.*"))) {
+                        if (email.contains("@gmail.com")) {
+                            try {
+                                uda.insert(user); //use get instead ;)
+                            } catch (SQLException exception) {
+                                System.out.println(exception);
+                            } finally {
+                                errorMsg = new Text("There was an issue in registering you. Please try again in some time or ensure that you have correctly entered your personal details!", 14);
+                                JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                
+                            CardLayout cl = (CardLayout) (Main.getCards().getLayout());
+                            cl.show(Main.getCards(), "HomeScreen"); //TODO: Move user directly to dashboard instead
+                        } else {
+                            errorMsg = new Text("Your email is invalid!", 14);
+                            JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        errorMsg = new Text("Your name cannot contain any numbers or special characters!", 14);
+                        JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    errorMsg = new Text("Your password should have 8 or more characters", 14);
+                    JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
-
-            CardLayout cl = (CardLayout) (Main.getCards().getLayout());
-            cl.show(Main.getCards(), "HomeScreen");
         }
     }
 

@@ -55,7 +55,7 @@ public class Login extends JPanel{
         loginBtn.getButton().addActionListener(e -> {
             String username = textFieldUsername.getTextfield().getText();
             String password = textFieldPassword.getTextfield().getText();
-            Text errorMsg = new Text("Please check your credentials again and try again.", 14);
+            Text errorMsg = new Text("You cannot leave any empty fields!", 14);
             if(password.isEmpty() || username.isEmpty()) {
                 JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
             } else {
