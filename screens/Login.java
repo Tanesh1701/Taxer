@@ -55,14 +55,23 @@ public class Login extends JPanel{
         loginBtn.getButton().addActionListener(e -> {
             String username = textFieldUsername.getTextfield().getText();
             String password = textFieldPassword.getTextfield().getText();
-            try {
-                user = uda.getUser(username, password);
-            } catch (SQLException e1) {
-                e1.printStackTrace();
+            Text errorMsg = new Text("Please check your credentials again and try again.", 14);
+            if(password.isEmpty() || username.isEmpty()) {
+                JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    user = uda.getUser(username, password);
+                    Main.getFrame().dispose();
+                    Dashboard dashboard = new Dashboard(user);
+                    dashboard.setVisible(true);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } finally {
+                    errorMsg = new Text("There was an issue in logging you in. Please try again in some time or check your credentials!", 14);
+                    JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
-            Main.getFrame().dispose();
-            Dashboard dashboard = new Dashboard(user);
-            dashboard.setVisible(true);
+            
         });
         JPanel containerBtn = new JPanel();
         containerBtn.setBackground(Color.WHITE);        
