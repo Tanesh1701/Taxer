@@ -95,11 +95,12 @@ public class Register extends JPanel{
                         if (email.contains("@gmail.com")) {
                             try {
                                 uda.insert(user);
-                                CardLayout cl = (CardLayout) (Main.getCards().getLayout());
-                                cl.show(Main.getCards(), "HomeScreen"); //TODO: Move user directly to dashboard instead
+                                user = uda.getUser(username, password);
+                                Main.getFrame().dispose();
+                                Dashboard dashboard = new Dashboard(user);
+                                dashboard.setVisible(true);
                             } catch (SQLException exception) {
                                 System.out.println(exception);
-                            } finally {
                                 errorMsg = new Text("There was an issue in registering you. Please try again in some time or ensure that you have correctly entered your personal details!", 14);
                                 JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
                             }

@@ -63,7 +63,6 @@ public class Login extends JPanel{
                     dashboard.setVisible(true);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
-                } finally {
                     errorMsg = new Text("There was an issue in logging you in. Please try again in some time or check your credentials!", 14);
                     JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
