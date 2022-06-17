@@ -1,9 +1,6 @@
 package screens;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import Database.UserDaoAccesser;
-
 import java.awt.Dimension;
 import models.Field;
 import models.Text;

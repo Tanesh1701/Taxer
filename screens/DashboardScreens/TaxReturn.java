@@ -1,8 +1,5 @@
 package screens.DashboardScreens;
-
 import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-
 import models.Button;
 import models.TaxField;
 import models.Text;
@@ -14,20 +11,12 @@ public class TaxReturn extends JPanel{
     JPanel frame = new JPanel();
     JPanel fieldPanel, mainPanel, radioBtnPanel, ratePanel;
 
-    //JLabel employeeID = new JLabel("Employee Identification");
     Text employeeID = new Text("Employee Identification", 12);
-    //JLabel employeeLabel = new JLabel("Job Position");
     Text employeeLabel = new Text("Job Position", 12);
-    //JLabel iet = new JLabel("Income Exemptions Threshold");
     Text iet = new Text("Income Exemptions Threshold", 12);
-    //JLabel noDependent = new JLabel("An employee with no dependent");
     Text noDependent = new Text("An employee with no dependents", 12);
-
-    //JLabel oneDependent = new JLabel("An employee with one dependent");
     Text oneDependent = new Text("An employee with dependent(s)", 12);
-    //JLabel noDependentAmt = new JLabel("- Rs 275, 000");
     Text noDependentAmt = new Text("Rs 275, 000", 12);
-    //JLabel oneDependentAmt = new JLabel("- Rs 385, 000");
     Text oneDependentAmt = new Text("Rs 385, 000", 12);
     Text taxRate;
 
@@ -41,7 +30,6 @@ public class TaxReturn extends JPanel{
 
     Button btnSubmit;
         
-    // Constants constants = new Constants();
 
     JSeparator separator = new JSeparator();
 
@@ -172,7 +160,6 @@ public class TaxReturn extends JPanel{
         fieldPanel.add(checkBox2, gbc1);
 
         
-        //fieldPanel.add(Box.createVerticalStrut(20), gbc1);
         checkBox1.setBackground(Color.WHITE);
         checkBox2.setBackground(Color.WHITE);
 
