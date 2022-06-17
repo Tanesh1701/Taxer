@@ -32,12 +32,13 @@ public class UserDaoAccesser implements UserDao{
     }
 
     @Override
-    public User getUser(int id) throws SQLException {
+    public User getUser(String username, String password) throws SQLException {
   
-        String query = "select * from users where id= ?";
+        String query = "select * from users where username=? and password=?";
         PreparedStatement ps = connection.prepareStatement(query);
   
-        ps.setInt(1, id);
+        ps.setString(1, username);
+        ps.setString(2, password);
         User user = new User();
         ResultSet rs = ps.executeQuery();
         boolean check = false;

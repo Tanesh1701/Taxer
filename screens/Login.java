@@ -2,15 +2,19 @@ package screens;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Database.UserDaoAccesser;
+
 import java.awt.Dimension;
 import models.Field;
 import models.Text;
+import models.User;
 import models.Button;
 import models.Constants;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
+import java.sql.SQLException;
 import java.util.Map;
 
 public class Login extends JPanel{
@@ -20,6 +24,8 @@ public class Login extends JPanel{
     private JPanel headerPanel = new JPanel();
     private JPanel tfPanel = new JPanel();
     Constants constants = new Constants();
+    UserDaoAccesser uda = new UserDaoAccesser();
+    User user = new User();
 
     public Login(){
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -47,8 +53,15 @@ public class Login extends JPanel{
         loginBtn.getButton().setPreferredSize(new Dimension(80,40));
         loginBtn.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
         loginBtn.getButton().addActionListener(e -> {
+            String username = textFieldUsername.getTextfield().getText();
+            String password = textFieldPassword.getTextfield().getText();
+            try {
+                user = uda.getUser(username, password);
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
             Main.getFrame().dispose();
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(user);
             dashboard.setVisible(true);
         });
         JPanel containerBtn = new JPanel();

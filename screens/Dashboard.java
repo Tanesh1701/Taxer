@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import models.Text;
+import models.User;
 import screens.DashboardScreens.TaxReturn;
 
 import java.awt.*;
@@ -26,7 +27,7 @@ public class Dashboard extends JFrame{
     TaxReturn taxReturnForm = new TaxReturn();
     static JFrame  dashboardFrame = new JFrame();
 
-    public Dashboard() {
+    public Dashboard(User user) {
         dashboardFrame.setTitle("Dashboard");
 
         dashboardFrame.setLayout(new BorderLayout());
@@ -47,7 +48,7 @@ public class Dashboard extends JFrame{
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setPreferredSize(new Dimension(200, 100));
 
-        Text username = new Text("Tanesh Chuckowree", 14);
+        Text username = new Text(user.getFullName(), 14);
         username.getTitle().setForeground(Color.WHITE);
         menuPanel.add(time.getTitle());
         menuPanel.add(username.getTitle());
