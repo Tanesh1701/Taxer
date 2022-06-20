@@ -58,13 +58,16 @@ public class Login extends JPanel{
             } else {
                 try {
                     user = uda.getUser(username, password);
-                    Main.getFrame().dispose();
-                    Dashboard dashboard = new Dashboard(user);
-                    dashboard.setVisible(true);
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                    errorMsg = new Text("There was an issue in logging you in. Please try again in some time or check your credentials!", 14);
-                    JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
+                    if (user != null) {
+                        Main.getFrame().dispose();
+                        Dashboard dashboard = new Dashboard(user);
+                        dashboard.setVisible(true);
+                    } else {
+                        errorMsg = new Text("There was an issue in logging you in. Please try again in some time or check your credentials!", 14);
+                        JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (Exception e1) {
+                    System.out.println(e1);
                 }
             }
             

@@ -2,6 +2,9 @@ package screens;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import Database.DatabaseConnection;
+
 import java.awt.*;
 
 public class Main extends JFrame{

@@ -132,7 +132,6 @@ public class TaxReturn extends JPanel{
         gbc1.gridx = 0; gbc1.gridy = 14; fieldPanel.add(iet.getTitle(), gbc1);
 
         noDependentAmt.getTitle().setBorder(BorderFactory.createEmptyBorder(0,300,0,0));
-        //checkBox1.setBorder(BorderFactory.createEmptyBorder(0,400,0,0));
         gbc1.gridx = 0; 
         gbc1.gridy = 15; 
         fieldPanel.add(noDependent.getTitle(), gbc1);
@@ -147,7 +146,6 @@ public class TaxReturn extends JPanel{
         gbc1.insets = new Insets(5, 10, 5, 20);
 
         oneDependentAmt.getTitle().setBorder(BorderFactory.createEmptyBorder(0,300,0,0));
-        //checkBox2.setBorder(BorderFactory.createEmptyBorder(0,400,0,0));
         gbc1.gridx = 0; 
         gbc1.gridy = 16; 
         fieldPanel.add(oneDependent.getTitle(), gbc1);
@@ -193,7 +191,6 @@ public class TaxReturn extends JPanel{
         //final frame settings
         frame.setBackground(Color.WHITE);
         frame.add(mainPanel); 
-        //frame.setSize(750, 650);     
         frame.setVisible(true);
     }
 

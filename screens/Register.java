@@ -86,23 +86,25 @@ public class Register extends JPanel{
             user.setEmail(email);
             user.setPassword(password);
             Text errorMsg = new Text("You cannot leave any empty fields!", 14);
+            User UserRegistered = new User();
 
             if(fullname.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 if (password.length() >= 8) {
                     if (!(fullname.matches(".*\\d.*"))) {
-                        if (email.contains("@gmail.com")) {
+                        if (email.contains("@")) {
                             try {
                                 uda.insert(user);
-                                user = uda.getUser(username, password);
-                                Main.getFrame().dispose();
-                                Dashboard dashboard = new Dashboard(user);
-                                dashboard.setVisible(true);
-                            } catch (SQLException exception) {
+                                UserRegistered = uda.getUser(username, password);
+                                if (UserRegistered != null) {
+                                    Main.getFrame().dispose();
+                                    Dashboard dashboard = new Dashboard(UserRegistered);
+                                    dashboard.setVisible(true);
+                                }
+                                
+                            } catch (Exception exception) {
                                 System.out.println(exception);
-                                errorMsg = new Text("There was an issue in registering you. Please try again in some time or ensure that you have correctly entered your personal details!", 14);
-                                JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
                             }
                         } else {
                             errorMsg = new Text("Your email is invalid!", 14);
