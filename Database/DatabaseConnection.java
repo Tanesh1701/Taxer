@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static Connection connection = null;
+    private static Connection connection;
 
     static {
         String url = "jdbc:mysql://localhost:3306/taxer";

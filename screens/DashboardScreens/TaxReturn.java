@@ -3,7 +3,8 @@ import javax.swing.*;
 import models.Button;
 import models.TaxField;
 import models.Text;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.*;
 
 public class TaxReturn extends JPanel{
@@ -180,6 +181,8 @@ public class TaxReturn extends JPanel{
         ratePanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         btnSubmit = new Button("Submit");
+        ButtonHandler handler = new ButtonHandler();
+        btnSubmit.getButton().addActionListener(handler);
         btnSubmit.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 
         mainPanel.add(mainTitle.getTitle());
@@ -192,6 +195,15 @@ public class TaxReturn extends JPanel{
         frame.setBackground(Color.WHITE);
         frame.add(mainPanel); 
         frame.setVisible(true);
+    }
+
+    private class ButtonHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e){
+            //TODO: Code for writing to textfile goes here.
+            //TODO: Simple validations for fields
+            //TODO: Different ways of writing to a textfile, pick what you want
+        }
     }
 
     public JPanel getPanel(){

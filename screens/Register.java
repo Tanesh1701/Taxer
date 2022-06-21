@@ -5,7 +5,6 @@ import javax.swing.*;
 import models.Button;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.sql.SQLException;
 import Database.UserDaoAccesser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
