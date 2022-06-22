@@ -1,22 +1,39 @@
 package screens.AdminDashboardScreens;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+import Database.UserDaoAccesser;
+
 import java.awt.*;
+import java.sql.SQLException;
 
 import models.Constants;
 import models.Text;
 
 public class Users extends JPanel {
     private JPanel usersPanel = new JPanel();
-    private JTable usersTable;
+    private JTable usersTable = new JTable();
     Constants constants = new Constants();
+    UserDaoAccesser uda = new UserDaoAccesser();
     
-    public Users() {
+    public Users() throws SQLException {
         usersPanel.setLayout(new BoxLayout(usersPanel, BoxLayout.PAGE_AXIS));
 
-        String[][] users = {{"1", "Tanesh Chuckowree", "Tanesh", "tan@gmail.com"}, {"2", "Zahra Oozeer", "Zahra", "zahraoozeer@gmail.com"}}; 
-        String[] columns = {"ID", "Full name", "Username", "Email"};
+        Object[] users = new Object[4]; 
+        Object[] columns = {"ID", "Full name", "Username", "Email"};
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.setColumnIdentifiers(columns);
 
-        usersTable = new JTable(users, columns);
+        for(int i = 0; i<uda.getUsers().size(); i++) {
+            users[0] = uda.getUsers().get(i).getId();
+            users[1] = uda.getUsers().get(i).getFullName();
+            users[2] = uda.getUsers().get(i).getUserName();
+            users[3] = uda.getUsers().get(i).getEmail();
+
+            tableModel.addRow(users);
+        }
+
+        usersTable.setModel(tableModel);
         usersTable.getTableHeader().setBackground(constants.getSecondaryColor());
         usersTable.getTableHeader().setForeground(constants.getPrimaryColor());
         try {

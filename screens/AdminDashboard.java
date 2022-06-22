@@ -14,13 +14,19 @@ public class AdminDashboard extends JFrame {
     JLabel[] menuLabels = new JLabel[2];
     JPanel[] panels = new JPanel[2];
     JPanel avatarPanel = new JPanel();
-    Users userPanel = new Users();
+    Users userPanel;
     JPanel adminsPanel = new JPanel();
     JPanel containerPanel = new JPanel();
     JPanel menuPanel = new JPanel();
 
     static JFrame adminDashboard = new JFrame();
+
     public AdminDashboard() {
+        try {
+            userPanel = new Users();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         adminDashboard.setTitle("Admin Dashboard");
         adminDashboard.setLayout(new BorderLayout());
 

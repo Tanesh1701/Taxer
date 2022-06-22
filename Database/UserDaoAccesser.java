@@ -60,11 +60,11 @@ public class UserDaoAccesser implements UserDao{
     }
 
     @Override
-    public List<User> getUsers() throws SQLException {
+    public ArrayList<User> getUsers() throws SQLException {
         String query = "select * from users";
         PreparedStatement ps = connection.prepareStatement(query);
         ResultSet rs = ps.executeQuery();
-        List<User> ls = new ArrayList<User>();
+        ArrayList<User> ls = new ArrayList<User>();
   
         while (rs.next()) {
             User user = new User();
