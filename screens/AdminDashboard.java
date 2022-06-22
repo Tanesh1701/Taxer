@@ -5,6 +5,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import models.Text;
 import models.User;
+import screens.AdminDashboardScreens.Users;
+
 import java.awt.*;
 
 public class AdminDashboard extends JFrame {
@@ -12,7 +14,7 @@ public class AdminDashboard extends JFrame {
     JLabel[] menuLabels = new JLabel[2];
     JPanel[] panels = new JPanel[2];
     JPanel avatarPanel = new JPanel();
-    JPanel usersPanel = new JPanel();
+    Users userPanel = new Users();
     JPanel adminsPanel = new JPanel();
     JPanel containerPanel = new JPanel();
     JPanel menuPanel = new JPanel();
@@ -48,7 +50,7 @@ public class AdminDashboard extends JFrame {
             menuPanel.add(Box.createRigidArea(new Dimension(10,30)));
         }
 
-        panels[0] = usersPanel;
+        panels[0] = userPanel.getUsersPanel();
         panels[1] = adminsPanel;
         
         for(int i = 0; i < panels.length; i++) {
@@ -122,8 +124,7 @@ public class AdminDashboard extends JFrame {
                        // using the showPanel function
                         switch (label.getText().trim()){
                             case "Users":
-                                showPanel(usersPanel);
-                                usersPanel.setBackground(Color.CYAN);
+                                showPanel(userPanel.getUsersPanel());
                                 break;
                                    
                             case "Admins":
