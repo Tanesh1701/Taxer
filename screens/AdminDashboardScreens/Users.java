@@ -1,12 +1,9 @@
 package screens.AdminDashboardScreens;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
 import Database.UserDaoAccesser;
-
 import java.awt.*;
 import java.sql.SQLException;
-
 import models.Constants;
 import models.Text;
 
