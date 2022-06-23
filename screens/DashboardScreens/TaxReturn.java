@@ -200,9 +200,7 @@ public class TaxReturn extends JPanel{
     private class ButtonHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e){
-            //TODO: Code for writing to textfile goes here.
-            //TODO: Simple validations for fields
-            //TODO: Different ways of writing to a textfile, pick what you want
+            
         }
     }
 
