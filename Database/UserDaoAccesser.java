@@ -61,8 +61,29 @@ public class UserDaoAccesser implements UserDao{
 
     @Override
     public ArrayList<User> getUsers() throws SQLException {
-        String query = "select * from users";
+        String query = "select * from users where type = ?";
         PreparedStatement ps = connection.prepareStatement(query);
+        ps.setString(1, "user");
+        ResultSet rs = ps.executeQuery();
+        ArrayList<User> ls = new ArrayList<User>();
+  
+        while (rs.next()) {
+            User user = new User();
+            user.setId(rs.getInt("id"));
+            user.setFullName(rs.getString("userfullname"));
+            user.setUserName(rs.getString("username"));
+            user.setEmail(rs.getString("email"));
+            user.setPassword(rs.getString("password"));
+            ls.add(user);
+        }
+        return ls;
+    }
+
+    @Override
+    public ArrayList<User> getAdmins() throws SQLException {
+        String query = "select * from users where type = ?";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setString(1, "admin");
         ResultSet rs = ps.executeQuery();
         ArrayList<User> ls = new ArrayList<User>();
   
@@ -90,4 +111,6 @@ public class UserDaoAccesser implements UserDao{
         ps.setInt(5, user.getId());
         ps.executeUpdate();
     }
+
+    
 }

@@ -57,13 +57,16 @@ public class Register extends JPanel{
         gbc.gridy = 4; 
         tfPanel.add(textfieldPassword.getTextfieldPanel(), gbc);      
 
+        tfPanel.setBorder(BorderFactory.createEmptyBorder(50, 0, 0, 0));
+
         registerButton = new Button("Register");
         registerButton.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
         registerButton.getButton().setPreferredSize(new Dimension(100,40));
         ButtonHandler handler = new ButtonHandler();
         registerButton.getButton().addActionListener(handler);
         JPanel containerBtn = new JPanel();
-        containerBtn.setBackground(Color.WHITE);        
+        containerBtn.setBackground(Color.WHITE);
+        containerBtn.setBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0));        
         containerBtn.add(registerButton.getButton());
 
         panel.add(headerPanel);
