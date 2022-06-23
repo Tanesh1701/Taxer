@@ -1,7 +1,7 @@
 ## Taxer
 A java program to calculate tax returns. Made using Java Swing.
 
-# Participants:
+# Team:
  - [Zahra Oozeer](https://github.com/ZahraO)
  - [Tanesh Chuckowree](https://github.com/Tanesh1701)
 
