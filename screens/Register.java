@@ -97,9 +97,15 @@ public class Register extends JPanel{
                                 uda.insert(user);
                                 UserRegistered = uda.getUser(username, password);
                                 if (UserRegistered != null) {
-                                    Main.getFrame().dispose();
-                                    Dashboard dashboard = new Dashboard(UserRegistered);
-                                    dashboard.setVisible(true);
+                                    if (UserRegistered.getType().equals("user")) {
+                                        Main.getFrame().dispose();
+                                        Dashboard dashboard = new Dashboard(UserRegistered);
+                                        dashboard.setVisible(true);
+                                    } else {
+                                        Main.getFrame().dispose();
+                                        AdminDashboard adminDashboard = new AdminDashboard();
+                                        adminDashboard.setVisible(true);
+                                    }
                                 }
                                 
                             } catch (Exception exception) {

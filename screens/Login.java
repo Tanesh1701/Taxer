@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
+import java.io.Console;
 import java.util.Map;
 
 public class Login extends JPanel{
@@ -58,9 +59,16 @@ public class Login extends JPanel{
                 try {
                     user = uda.getUser(username, password);
                     if (user != null) {
-                        Main.getFrame().dispose();
-                        Dashboard dashboard = new Dashboard(user);
-                        dashboard.setVisible(true);
+                        System.out.println(user.getType());
+                        if (user.getType().equals("user")) {
+                            Main.getFrame().dispose();
+                            Dashboard dashboard = new Dashboard(user);
+                            dashboard.setVisible(true);
+                        } else {
+                            Main.getFrame().dispose();
+                            AdminDashboard adminDashboard = new AdminDashboard();
+                            adminDashboard.setVisible(true);
+                        }
                     } else {
                         errorMsg = new Text("There was an issue in logging you in. Please try again in some time or check your credentials!", 14);
                         JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);

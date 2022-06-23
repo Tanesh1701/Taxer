@@ -11,12 +11,13 @@ public class UserDaoAccesser implements UserDao{
 
     @Override
     public int insert(User user) throws SQLException {
-        String query = "insert into users(userfullname, "+"username, "+ "email, " + "password)" + " VALUES (?, ?, ?, ?)";
+        String query = "insert into users(userfullname, "+"username, "+ "email, " + "password, " + "type)" + " VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, user.getFullName());
         ps.setString(2, user.getUserName());
         ps.setString(3, user.getEmail());
         ps.setString(4, user.getPassword());
+        ps.setString(5, "user");
         int n = ps.executeUpdate();
         return n;
     }
@@ -35,7 +36,7 @@ public class UserDaoAccesser implements UserDao{
         String query = "select * from users where username=? and password=?";
         PreparedStatement ps = connection.prepareStatement(query);
   
-        ps.setString(1, username);
+        ps.setString(1, username); //ps.setString is for '?'
         ps.setString(2, password);
         User user = new User();
         ResultSet rs = ps.executeQuery();
@@ -48,6 +49,7 @@ public class UserDaoAccesser implements UserDao{
             user.setUserName(rs.getString("username"));
             user.setEmail(rs.getString("email"));
             user.setPassword(rs.getString("password"));
+            user.setType(rs.getString("type"));
         }
   
         if (check == true) {
