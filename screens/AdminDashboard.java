@@ -22,7 +22,7 @@ public class AdminDashboard extends JFrame {
 
     static JFrame adminDashboard = new JFrame();
 
-    public AdminDashboard() {
+    public AdminDashboard(User user) {
         try {
             userPanel = new Users();
             adminPanel = new Admins();
@@ -43,9 +43,9 @@ public class AdminDashboard extends JFrame {
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setPreferredSize(new Dimension(200, 100));
 
-        //Text username = new Text(user.getFullName(), 14);
-        //username.getTitle().setForeground(Color.WHITE);
-        //menuPanel.add(username.getTitle());
+        Text username = new Text(user.getFullName(), 14);
+        username.getTitle().setForeground(Color.WHITE);
+        menuPanel.add(username.getTitle());
         menuPanel.add(Box.createRigidArea(new Dimension(0,100)));
 
         containerPanel.setLayout(new GridBagLayout());
@@ -164,11 +164,5 @@ public class AdminDashboard extends JFrame {
 
     public static JFrame getDashboardFrame() {
         return adminDashboard;
-    }
-
-
-    public static void main(String[] args) {
-        AdminDashboard adminDashboard = new AdminDashboard();
-        
     }
 }

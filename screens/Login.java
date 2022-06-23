@@ -11,7 +11,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
-import java.io.Console;
 import java.util.Map;
 
 public class Login extends JPanel{
@@ -66,7 +65,7 @@ public class Login extends JPanel{
                             dashboard.setVisible(true);
                         } else {
                             Main.getFrame().dispose();
-                            AdminDashboard adminDashboard = new AdminDashboard();
+                            AdminDashboard adminDashboard = new AdminDashboard(user);
                             adminDashboard.setVisible(true);
                         }
                     } else {

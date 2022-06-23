@@ -106,7 +106,7 @@ public class Register extends JPanel{
                                         dashboard.setVisible(true);
                                     } else {
                                         Main.getFrame().dispose();
-                                        AdminDashboard adminDashboard = new AdminDashboard();
+                                        AdminDashboard adminDashboard = new AdminDashboard(UserRegistered);
                                         adminDashboard.setVisible(true);
                                     }
                                 }
