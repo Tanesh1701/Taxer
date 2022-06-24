@@ -307,13 +307,14 @@ public class TaxReturn extends JPanel{
         return mainPanel;
     }
 
-    public static void main(String[] args) {
-        JFrame f = new JFrame();
-        TaxReturn tr = new TaxReturn();
+    // public static void main(String[] args) {
+    //     JFrame f = new JFrame();
+    //     TaxReturn tr = new TaxReturn();
 
-        f.add(tr.getMainPanel());
-        f.setSize(new Dimension(600,600));
-        f.setVisible(true);
-    }
+    //     f.add(tr.getMainPanel());
+    //     f.setSize(new Dimension(600,600));
+    //     f.setVisible(true);
+    // }
+    //TODO: Uncomment the above to run the tax form on a single frame and skip on login
 
 }
