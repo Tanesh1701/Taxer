@@ -2,6 +2,7 @@ package models;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JButton;
+import java.awt.Font;
 
 public class Button extends JButton {
     private JButton button;
@@ -15,6 +16,12 @@ public class Button extends JButton {
         button.setForeground(constants.getPrimaryColor());
         button.setBorderPainted(false);
         button.setFocusable(false);
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Text.class.getResourceAsStream("../Assets/Fonts/VarelaRound-Regular.TTF"));
+            button.setFont(font.deriveFont(Font.BOLD, 12));
+        } catch (Exception e) {
+            System.out.println(e);
+        } 
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 button.setBackground(Color.black);
