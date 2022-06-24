@@ -24,7 +24,8 @@ public class TaxReturn extends JPanel{
 
     JTextField textFieldRate = new JTextField(10);
 
-    JRadioButton radioButton1 = new JRadioButton("Mr."), radioButton2 = new JRadioButton("Mrs."), 
+    JRadioButton radioButton1 = new JRadioButton("Mr."), 
+    radioButton2 = new JRadioButton("Mrs."), 
     radioButton3 = new JRadioButton("Miss");
 
     JCheckBox checkBox1 = new JCheckBox(), checkBox2 = new JCheckBox();
@@ -50,6 +51,14 @@ public class TaxReturn extends JPanel{
         radioBtnPanel.add(radioButton2);
         radioBtnPanel.add(radioButton3);
         radioButton1.setBackground(Color.WHITE);
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Text.class.getResourceAsStream("../Assets/Fonts/VarelaRound-Regular.TTF"));
+            radioButton1.setFont(font.deriveFont(Font.PLAIN, 12f));
+            radioButton2.setFont(font.deriveFont(Font.PLAIN, 12f));
+            radioButton3.setFont(font.deriveFont(Font.PLAIN, 12f));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         radioButton2.setBackground(Color.WHITE);
         radioButton3.setBackground(Color.WHITE);
         radioBtnPanel.setBackground(Color.WHITE);
