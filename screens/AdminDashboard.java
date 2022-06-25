@@ -11,8 +11,8 @@ import screens.AdminDashboardScreens.Users;
 import java.awt.*;
 
 public class AdminDashboard extends JFrame {
-    String menuItems[] = {"Users", "Admins"};
-    JLabel[] menuLabels = new JLabel[2];
+    String menuItems[] = {"Users", "Admins", "Exit"};
+    JLabel[] menuLabels = new JLabel[3];
     JPanel[] panels = new JPanel[2];
     JPanel avatarPanel = new JPanel();
     Users userPanel;
@@ -138,7 +138,10 @@ public class AdminDashboard extends JFrame {
                             case "Admins":
                                 showPanel(adminPanel.getAdminsPanel());
                                 break;
-                                   
+                            case "Exit":
+                                AdminDashboard.getDashboardFrame().dispose();
+                            break;
+                                          
                     }
                         
                 }
