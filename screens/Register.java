@@ -14,7 +14,9 @@ public class Register extends JPanel{
     private JPanel panel = new JPanel();
     private JPanel headerPanel = new JPanel();
     private JPanel tfPanel = new JPanel();
+    private JPanel panelBtnBack = new JPanel();
     Button registerButton;
+    BackButton backBtn;
     Constants constants = new Constants();
     User user = new User();
     UserDaoAccesser uda = new UserDaoAccesser();
@@ -27,7 +29,25 @@ public class Register extends JPanel{
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(Color.white);
 
+        panelBtnBack.setLayout(new FlowLayout());
+        panelBtnBack.setPreferredSize(new Dimension(100, 50));
+        panelBtnBack.setBorder(BorderFactory.createEmptyBorder(0, 0, -70, 620));
+        panelBtnBack.setBackground(constants.getPrimaryColor());
+        panelBtnBack.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        ImageIcon pic1 = new ImageIcon("./Assets/Images/back.png");
+        JLabel img1 = new JLabel(pic1);
+        img1.setBorder(BorderFactory.createEmptyBorder(0,0,0,-10));
+        panelBtnBack.add(img1);
+
+        backBtn = new BackButton("Back");
+        backBtn.getBackButton().setPreferredSize(new Dimension(60,40));
+        backBtn.getBackButton().setBorder(BorderFactory.createEmptyBorder(0, -25, 0, 0));
+        panelBtnBack.add(backBtn.getBackButton());
+        ButtonHandler handler1 = new ButtonHandler();
+        backBtn.getBackButton().addActionListener(handler1);
+
         headerPanel.add(header.getTitle());
+        headerPanel.setPreferredSize(new Dimension(100, 50));
         headerPanel.setBackground(constants.getPrimaryColor());
 
         tfPanel.setLayout(new GridBagLayout());     
@@ -39,7 +59,7 @@ public class Register extends JPanel{
         textfieldEmail = new Field("Email:");
         textfieldPassword = new Field("Password:");
 
-        gbc.insets = new Insets(0, 0, 30, 0);
+        gbc.insets = new Insets(0, 0, 20, 0);
 
         gbc.gridx = 0; 
         gbc.gridy = 1; 
@@ -57,18 +77,19 @@ public class Register extends JPanel{
         gbc.gridy = 4; 
         tfPanel.add(textfieldPassword.getTextfieldPanel(), gbc);      
 
-        tfPanel.setBorder(BorderFactory.createEmptyBorder(50, 0, 0, 0));
+        tfPanel.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
         registerButton = new Button("Register");
         registerButton.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
         registerButton.getButton().setPreferredSize(new Dimension(100,40));
-        ButtonHandler handler = new ButtonHandler();
+        ButtonHandler2 handler = new ButtonHandler2();
         registerButton.getButton().addActionListener(handler);
         JPanel containerBtn = new JPanel();
         containerBtn.setBackground(Color.WHITE);
         containerBtn.setBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0));        
         containerBtn.add(registerButton.getButton());
 
+        panel.add(panelBtnBack);
         panel.add(headerPanel);
         panel.add(tfPanel);
         panel.add(containerBtn);
@@ -76,6 +97,15 @@ public class Register extends JPanel{
     }
 
     private class ButtonHandler implements ActionListener {
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            CardLayout cl = (CardLayout) (Main.getCards().getLayout());
+            cl.show(Main.getCards(), "Login");
+        }
+    }
+
+    private class ButtonHandler2 implements ActionListener {
         
         @Override
         public void actionPerformed(ActionEvent e){
