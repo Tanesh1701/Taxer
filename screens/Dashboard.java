@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import models.Text;
 import models.User;
+import screens.DashboardScreens.Calculator;
 import screens.DashboardScreens.TaxReturn;
 
 import java.awt.*;
@@ -20,11 +21,11 @@ public class Dashboard extends JFrame{
     JPanel menuPanel = new JPanel();
     JPanel homePanel = new JPanel();
     JPanel taxForm = new JPanel();
-    JPanel calculatorPanel = new JPanel();
     JPanel settingsPanel = new JPanel();
     JPanel logoutPanel = new JPanel();
 
     TaxReturn taxReturnForm = new TaxReturn();
+    Calculator calculator = new Calculator();
     static JFrame dashboardFrame = new JFrame();
 
     public Dashboard(User user) {
@@ -59,24 +60,11 @@ public class Dashboard extends JFrame{
         JLabel homelabel = new JLabel("Hello Home");
         homePanel.add(homelabel);
 
-       
-        // JLabel taxLabel = new JLabel("Hello Tax");
-        // taxForm.setLayout(new BorderLayout());
-        // taxForm.add(taxLabel, BorderLayout.NORTH);
-        // taxForm.add(time.getTitle(), BorderLayout.SOUTH);
-        
-
-       
-        JLabel calculatorLabel = new JLabel("Hello Calculator");
-        calculatorPanel.add(calculatorLabel);
-
         
         JLabel settingsLabel = new JLabel("Hello Settings");
         settingsPanel.add(settingsLabel);
 
         
-        JLabel logoutLabel = new JLabel("Hello Logout");
-        logoutPanel.add(logoutLabel);
 
         for(int i = 0; i < menuLabels.length; i++) {
             Text text = new Text(menuItems[i], 14);
@@ -88,7 +76,7 @@ public class Dashboard extends JFrame{
 
         panels[0] = homePanel;
         panels[1] = taxReturnForm.getMainPanel();
-        panels[2] = calculatorPanel;
+        panels[2] = calculator.getPanel();
         panels[3] = settingsPanel;
         panels[4] = logoutPanel;
 
@@ -173,8 +161,7 @@ public class Dashboard extends JFrame{
                                 break;
                                    
                             case "Calculator":
-                                showPanel(calculatorPanel);
-                                calculatorPanel.setBackground(Color.BLUE);
+                                showPanel(calculator.getPanel());
                                 break;
                                    
                             case "Settings":

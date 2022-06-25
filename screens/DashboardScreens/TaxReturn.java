@@ -1,16 +1,20 @@
 package screens.DashboardScreens;
+import java.io.*;
 import java.awt.*;
 import models.Text;
-import java.io.*;
 import javax.swing.*;
 import models.Button;
 import models.TaxField;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Formatter;
+import java.math.BigDecimal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Formatter;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TaxReturn extends JPanel{
 
@@ -44,8 +48,7 @@ public class TaxReturn extends JPanel{
     TaxField taxFieldNIC = new TaxField("National Identity Card (NIC)");
     TaxField taxFieldTAN = new TaxField("Tax Account Number (TAN)");
     TaxField taxFieldTypeEmp = new TaxField("Type Of Employment");
-    TaxField taxFieldYIncome = new TaxField("Yearly Income");
-
+    TaxField taxFieldIncome = new TaxField("Yearly Income");
 
     double tax = 0, chargeableIncome = 0, dependent0 = 275000, dependent1 = 385000;
 
@@ -54,18 +57,24 @@ public class TaxReturn extends JPanel{
         radioBtnPanel = new JPanel();
         radioBtnPanel.setLayout(new FlowLayout());
         ButtonGroup bgRadio = new ButtonGroup();
+        radioBtnPanel.add(radioButton1);
+        radioBtnPanel.add(radioButton2);
+        radioBtnPanel.add(radioButton3);
+        bgRadio.add(radioButton1);
+        bgRadio.add(radioButton2);
+        bgRadio.add(radioButton3);
+        // RadioButtonHandler rbh = new RadioButtonHandler();
+        // radioButton1.addItemListener(rbh);
+        // radioButton2.addItemListener(rbh);
+        // radioButton3.addItemListener(rbh);
+
         ButtonGroup bgCheck = new ButtonGroup();
         bgCheck.add(checkBox1);
         bgCheck.add(checkBox2);
         CheckBoxHandler cbh = new CheckBoxHandler();
         checkBox1.addItemListener(cbh);
         checkBox2.addItemListener(cbh);
-        bgRadio.add(radioButton1);
-        bgRadio.add(radioButton2);
-        bgRadio.add(radioButton3);
-        radioBtnPanel.add(radioButton1);
-        radioBtnPanel.add(radioButton2);
-        radioBtnPanel.add(radioButton3);
+        
         try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, Text.class.getResourceAsStream("../Assets/Fonts/VarelaRound-Regular.TTF"));
             radioButton1.setFont(font.deriveFont(Font.PLAIN, 12f));
@@ -144,7 +153,7 @@ public class TaxReturn extends JPanel{
         
         gbc1.gridx = 0;
         gbc1.gridy = 11;
-        fieldPanel.add(taxFieldYIncome.getTaxFieldPanel(), gbc1);
+        fieldPanel.add(taxFieldIncome.getTaxFieldPanel(), gbc1);
 
         gbc1.gridx = 0;
         gbc1.gridy = 12;
@@ -225,16 +234,26 @@ public class TaxReturn extends JPanel{
         frame.setVisible(true);
     }
 
+    // private class RadioButtonHandler implements ItemListener{
+
+    //     private void itemStateChanged(ItemEvent e){
+
+    //         if(radioButton1.isSelected()){
+    //             radioButton1.getText();
+    //         }
+    //     }
+    // }
+
     private class CheckBoxHandler implements ItemListener{
 
         public void itemStateChanged(ItemEvent e){
             
             if(checkBox1.isSelected()){
-                chargeableIncome = Double.parseDouble(taxFieldYIncome.getTaxTextField().getText()) - dependent0;  
+                chargeableIncome = Double.parseDouble(taxFieldIncome.getTaxTextField().getText()) - dependent0;  
                 tax = (0.1/12) * chargeableIncome;
                 textFieldRate.setText(new BigDecimal(chargeableIncome).toPlainString());   
             } else{
-                chargeableIncome = Double.parseDouble(taxFieldYIncome.getTaxTextField().getText()) - dependent1;
+                chargeableIncome = Double.parseDouble(taxFieldIncome.getTaxTextField().getText()) - dependent1;
                 tax = (0.1/12) * chargeableIncome;
                 textFieldRate.setText(new BigDecimal(chargeableIncome).toPlainString());
             }
@@ -252,7 +271,7 @@ public class TaxReturn extends JPanel{
             String nic = taxFieldNIC.getTaxTextField().getText();
             String tan = taxFieldTAN.getTaxTextField().getText();
             String employment = taxFieldTypeEmp.getTaxTextField().getText();
-            String income = taxFieldYIncome.getTaxTextField().getText();
+            String income = taxFieldIncome.getTaxTextField().getText();
             Text errorMsg = new Text("You cannot leave any empty fields!", 14);
 
             if(fullname.isEmpty() || address.isEmpty() || num.isEmpty() || nic.isEmpty() || tan.isEmpty() || employment.isEmpty() || income.isEmpty()){
@@ -269,13 +288,25 @@ public class TaxReturn extends JPanel{
                             
                             if(tan.matches("[0-9]+") && tan.length() == 8){
                                 
-                                try {  
-                                    Formatter outfile = new Formatter(new File("./screens/taxReturn.txt"));
-                                    outfile.format("%s %s %s %s %s %s %s %s %n", fullname, address, num, nic, tan, employment, income, tax);
-                                    
+                                try {
+                                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                                    LocalDateTime currentTime = LocalDateTime.now();
+
+                                    BufferedWriter bw = Files.newBufferedWriter(Paths.get("./screens/taxRetun.txt"));
+                                    bw.write("TAXER" + "               " + dtf.format(currentTime) + "\n");
+                                    bw.write("____________________________________" + "\n" + "\n");
+                                    bw.write("Full name: " + radioButton1.getText() + taxFieldName.getTaxTextField().getText() + "\n");
+                                    bw.write("Address: " + taxfieldAddress.getTaxTextField().getText() + "\n");
+                                    bw.write("Contact Number: " + taxFieldContact.getTaxTextField().getText() + "\n");
+                                    bw.write("NIC: " + taxFieldNIC.getTaxTextField().getText() + "\n");
+                                    bw.write("TAN: " + taxFieldTAN.getTaxTextField().getText() + "\n");
+                                    bw.write("Type of Employment: " + taxFieldTypeEmp.getTaxTextField().getText() + "\n");
+                                    bw.write("Yearly Income: " + taxFieldIncome.getTaxTextField().getText() + "\n");
+                                    bw.write("Tax: " + tax + "\n");
+
                                     errorMsg = new Text("You're good to go bud!", 14);
                                     JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Success", JOptionPane.INFORMATION_MESSAGE);                      
-                                    outfile.close();
+                                    bw.close();
                                 } catch (Exception exception) {
                                     System.out.println(exception);
                                 }
@@ -307,14 +338,12 @@ public class TaxReturn extends JPanel{
         return mainPanel;
     }
 
-    // public static void main(String[] args) {
-    //     JFrame f = new JFrame();
-    //     TaxReturn tr = new TaxReturn();
+    public static void main(String[] args) {
+        JFrame f = new JFrame();
+        TaxReturn tr = new TaxReturn();
 
-    //     f.add(tr.getMainPanel());
-    //     f.setSize(new Dimension(600,600));
-    //     f.setVisible(true);
-    // }
-    //TODO: Uncomment the above to run the tax form on a single frame and skip on login
-
+        f.add(tr.getMainPanel());
+        f.setSize(new Dimension(600,600));
+        f.setVisible(true);
+    }
 }
