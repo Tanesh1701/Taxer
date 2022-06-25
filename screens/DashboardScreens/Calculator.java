@@ -133,13 +133,4 @@ public class Calculator extends JPanel{
     public JPanel getPanel() {
         return panel;
     }
-
-    public static void main(String[] args) {
-        JFrame f = new JFrame();
-        Calculator tr = new Calculator();
-
-        f.add(tr.getPanel());
-        f.setSize(new Dimension(600,600));
-        f.setVisible(true);
-    }
 }
