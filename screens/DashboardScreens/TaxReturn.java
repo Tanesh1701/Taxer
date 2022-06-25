@@ -34,7 +34,7 @@ public class TaxReturn extends JPanel{
     JTextField textFieldRate = new JTextField(10);
 
     JRadioButton radioButton1 = new JRadioButton("Mr."), radioButton2 = new JRadioButton("Mrs."), 
-    radioButton3 = new JRadioButton("Miss");
+    radioButton3 = new JRadioButton("Miss.");
 
     JCheckBox checkBox1 = new JCheckBox(), checkBox2 = new JCheckBox();
 
@@ -51,6 +51,7 @@ public class TaxReturn extends JPanel{
     TaxField taxFieldIncome = new TaxField("Yearly Income");
 
     double tax = 0, chargeableIncome = 0, dependent0 = 275000, dependent1 = 385000;
+    String gender;
 
     public TaxReturn(){
         //radioBtnPanel and its components
@@ -63,10 +64,10 @@ public class TaxReturn extends JPanel{
         bgRadio.add(radioButton1);
         bgRadio.add(radioButton2);
         bgRadio.add(radioButton3);
-        // RadioButtonHandler rbh = new RadioButtonHandler();
-        // radioButton1.addItemListener(rbh);
-        // radioButton2.addItemListener(rbh);
-        // radioButton3.addItemListener(rbh);
+        RadioButtonHandler rbh = new RadioButtonHandler();
+        radioButton1.addItemListener(rbh);
+        radioButton2.addItemListener(rbh);
+        radioButton3.addItemListener(rbh);
 
         ButtonGroup bgCheck = new ButtonGroup();
         bgCheck.add(checkBox1);
@@ -234,15 +235,19 @@ public class TaxReturn extends JPanel{
         frame.setVisible(true);
     }
 
-    // private class RadioButtonHandler implements ItemListener{
+    private class RadioButtonHandler implements ItemListener{
 
-    //     private void itemStateChanged(ItemEvent e){
+        public void itemStateChanged(ItemEvent e){
 
-    //         if(radioButton1.isSelected()){
-    //             radioButton1.getText();
-    //         }
-    //     }
-    // }
+            if(radioButton1.isSelected()){
+                gender = radioButton1.getText();
+            } else if (radioButton2.isSelected()) {
+                gender = radioButton2.getText();
+            } else if (radioButton3.isSelected()) { 
+                gender = radioButton3.getText();
+            }
+        }
+    }
 
     private class CheckBoxHandler implements ItemListener{
 
@@ -292,19 +297,19 @@ public class TaxReturn extends JPanel{
                                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
                                     LocalDateTime currentTime = LocalDateTime.now();
 
-                                    BufferedWriter bw = Files.newBufferedWriter(Paths.get("./screens/taxRetun.txt"));
+                                    BufferedWriter bw = Files.newBufferedWriter(Paths.get("./screens/taxReturn.txt"));
                                     bw.write("TAXER" + "               " + dtf.format(currentTime) + "\n");
                                     bw.write("____________________________________" + "\n" + "\n");
-                                    bw.write("Full name: " + radioButton1.getText() + taxFieldName.getTaxTextField().getText() + "\n");
+                                    bw.write("Full name: " + gender + " " + taxFieldName.getTaxTextField().getText() + "\n");
                                     bw.write("Address: " + taxfieldAddress.getTaxTextField().getText() + "\n");
                                     bw.write("Contact Number: " + taxFieldContact.getTaxTextField().getText() + "\n");
-                                    bw.write("NIC: " + taxFieldNIC.getTaxTextField().getText() + "\n");
-                                    bw.write("TAN: " + taxFieldTAN.getTaxTextField().getText() + "\n");
+                                    bw.write("National Identity Card(NIC): " + taxFieldNIC.getTaxTextField().getText() + "\n");
+                                    bw.write("Tax Account Number(TAN): " + taxFieldTAN.getTaxTextField().getText() + "\n");
                                     bw.write("Type of Employment: " + taxFieldTypeEmp.getTaxTextField().getText() + "\n");
-                                    bw.write("Yearly Income: " + taxFieldIncome.getTaxTextField().getText() + "\n");
-                                    bw.write("Tax: " + tax + "\n");
+                                    bw.write("Yearly Income: Rs " + taxFieldIncome.getTaxTextField().getText() + "\n");
+                                    bw.write("Tax: Rs " + tax + "\n");
 
-                                    errorMsg = new Text("You're good to go bud!", 14);
+                                    errorMsg = new Text("You have succesfully submitted your tax return form!", 14);
                                     JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Success", JOptionPane.INFORMATION_MESSAGE);                      
                                     bw.close();
                                 } catch (Exception exception) {
