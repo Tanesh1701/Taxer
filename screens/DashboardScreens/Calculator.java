@@ -1,5 +1,7 @@
 package screens.DashboardScreens;
 import models.*;
+import models.Button;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.Color;
@@ -35,7 +37,10 @@ public class Calculator extends JPanel{
         String[] labels = {"7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+"};
 
         for(int counter = 0; counter < labels.length; counter++){
-            numberKey = new JButton(labels[counter]);
+            JButton numberKey = new JButton(labels[counter]);
+            numberKey.setFocusable(false);
+            numberKey.setBackground(new Constants().getPrimaryColor());
+            numberKey.setForeground(new Constants().getSecondaryColor());
             numberKeysPanel.add(numberKey);
         }
         numberKeysPanel.setLayout(numberKeysGrid);
