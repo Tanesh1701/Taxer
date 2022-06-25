@@ -28,11 +28,7 @@ public class BackButton {
             System.out.println(e);
         } 
         button.addMouseListener(new java.awt.event.MouseAdapter() {
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(constants.getPrimaryColor());
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 button.setBackground(constants.getPrimaryColor());
             }
         });  
