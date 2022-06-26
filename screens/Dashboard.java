@@ -13,8 +13,8 @@ import screens.DashboardScreens.TaxReturn;
 import java.awt.*;
 
 public class Dashboard extends JFrame{
-    String menuItems[] = {"Home", "Tax Return", "Calculator", "Settings", "Exit"};
-    JLabel[] menuLabels = new JLabel[5];
+    String menuItems[] = {"Tax Return", "Calculator", "Settings", "Exit"};
+    JLabel[] menuLabels = new JLabel[4];
     JPanel[] panels = new JPanel[5];
     JPanel avatarPanel = new JPanel();
     JPanel containerPanel = new JPanel();
@@ -56,9 +56,6 @@ public class Dashboard extends JFrame{
         menuPanel.add(Box.createRigidArea(new Dimension(0,100)));
 
         containerPanel.setLayout(new GridBagLayout());
-
-        JLabel homelabel = new JLabel("Hello Home");
-        homePanel.add(homelabel);
 
         
         JLabel settingsLabel = new JLabel("Hello Settings");
@@ -150,11 +147,6 @@ public class Dashboard extends JFrame{
                         // display the selected panel depending on the selected label
                        // using the showPanel function
                         switch (label.getText().trim()){
-                            case "Home":
-                                showPanel(homePanel);
-                                homePanel.setBackground(Color.CYAN);
-                                break;
-                                   
                             case "Tax Return":
                                 showPanel(taxReturnForm.getMainPanel());
                                 //taxForm.setBackground(Color.red);
