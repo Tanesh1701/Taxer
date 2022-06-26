@@ -9,5 +9,5 @@ public interface UserDao {
     public User getUser(String username, String password) throws SQLException;
     public ArrayList<User> getUsers() throws SQLException;
     public ArrayList<User> getAdmins() throws SQLException;
-    public void update(User emp) throws SQLException;
+    public void update(User user, int id) throws SQLException;
 }

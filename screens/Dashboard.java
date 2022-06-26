@@ -2,12 +2,14 @@ package screens;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import models.Text;
 import models.User;
 import screens.DashboardScreens.Calculator;
+import screens.DashboardScreens.Settings;
 import screens.DashboardScreens.TaxReturn;
 
 import java.awt.*;
@@ -20,12 +22,11 @@ public class Dashboard extends JFrame{
     JPanel containerPanel = new JPanel();
     JPanel menuPanel = new JPanel();
     JPanel homePanel = new JPanel();
-    JPanel taxForm = new JPanel();
-    JPanel settingsPanel = new JPanel();
     JPanel logoutPanel = new JPanel();
 
     TaxReturn taxReturnForm = new TaxReturn();
     Calculator calculator = new Calculator();
+    Settings settings;
     static JFrame dashboardFrame = new JFrame();
 
     public Dashboard(User user) {
@@ -33,6 +34,7 @@ public class Dashboard extends JFrame{
 
         dashboardFrame.setLayout(new BorderLayout());
 
+        settings = new Settings(user);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridy = 1;
         gbc.gridwidth = 2;
@@ -57,12 +59,6 @@ public class Dashboard extends JFrame{
 
         containerPanel.setLayout(new GridBagLayout());
 
-        
-        JLabel settingsLabel = new JLabel("Hello Settings");
-        settingsPanel.add(settingsLabel);
-
-        
-
         for(int i = 0; i < menuLabels.length; i++) {
             Text text = new Text(menuItems[i], 14);
             text.getTitle().setForeground(Color.WHITE);
@@ -74,7 +70,7 @@ public class Dashboard extends JFrame{
         panels[0] = homePanel;
         panels[1] = taxReturnForm.getMainPanel();
         panels[2] = calculator.getPanel();
-        panels[3] = settingsPanel;
+        panels[3] = settings.getPanel();
         panels[4] = logoutPanel;
 
         for(int i = 0; i < panels.length; i++) {
@@ -149,7 +145,6 @@ public class Dashboard extends JFrame{
                         switch (label.getText().trim()){
                             case "Tax Return":
                                 showPanel(taxReturnForm.getMainPanel());
-                                //taxForm.setBackground(Color.red);
                                 break;
                                    
                             case "Calculator":
@@ -157,8 +152,7 @@ public class Dashboard extends JFrame{
                                 break;
                                    
                             case "Settings":
-                                showPanel(settingsPanel);
-                                settingsPanel.setBackground(Color.GRAY);
+                                showPanel(settings.getPanel());
                                 break;
                                    
                             case "Exit":

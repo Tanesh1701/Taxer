@@ -100,15 +100,14 @@ public class UserDaoAccesser implements UserDao{
     }
 
     @Override
-    public void update(User user) throws SQLException {
+    public void update(User user, int id) throws SQLException {
   
-        String query = "update users set userfullname=?, " + " username=?, " + " email=?, " + " password=? " + " where emp_id = ?";
+        String query = "update users set userfullname=?, " + " email=?, " + " password=? " + " where id = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, user.getFullName());
-        ps.setString(2, user.getUserName());
-        ps.setString(3, user.getEmail());
-        ps.setString(4, user.getPassword());
-        ps.setInt(5, user.getId());
+        ps.setString(2, user.getEmail());
+        ps.setString(3, user.getPassword());
+        ps.setInt(4, id);
         ps.executeUpdate();
     }
 

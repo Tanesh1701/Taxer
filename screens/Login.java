@@ -78,7 +78,6 @@ public class Login extends JPanel{
                 try {
                     user = uda.getUser(username, password);
                     if (user != null) {
-                        System.out.println(user.getType());
                         if (user.getType().equals("user")) {
                             Main.getFrame().dispose();
                             Dashboard dashboard = new Dashboard(user);
