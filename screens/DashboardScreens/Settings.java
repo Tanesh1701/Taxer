@@ -15,8 +15,7 @@ public class Settings extends JPanel {
     private JPanel headerPanel = new JPanel();
     private JPanel tfPanel = new JPanel();
     private JPanel panelBtnBack = new JPanel();
-    Button registerButton;
-    BackButton backBtn;
+    Button updateButton;
     Constants constants = new Constants();
     User updateUser = new User();
     UserDaoAccesser uda = new UserDaoAccesser();
@@ -71,15 +70,15 @@ public class Settings extends JPanel {
 
         tfPanel.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
-        registerButton = new Button("Update");
-        registerButton.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
-        registerButton.getButton().setPreferredSize(new Dimension(100,40));
+        updateButton = new Button("Update");
+        updateButton.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        updateButton.getButton().setPreferredSize(new Dimension(100,40));
         ButtonHandler2 handler = new ButtonHandler2();
-        registerButton.getButton().addActionListener(handler);
+        updateButton.getButton().addActionListener(handler);
         JPanel containerBtn = new JPanel();
         containerBtn.setBackground(Color.WHITE);
         containerBtn.setBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0));        
-        containerBtn.add(registerButton.getButton());
+        containerBtn.add(updateButton.getButton());
 
         panel.add(panelBtnBack);
         panel.add(headerPanel);
@@ -98,7 +97,6 @@ public class Settings extends JPanel {
             updateUser.setFullName(fullname);
             updateUser.setEmail(email);
             updateUser.setPassword(password);
-            System.out.println(id);
             Text errorMsg = new Text("You cannot leave any empty fields!", 14);
 
             if(fullname.isEmpty() || email.isEmpty() || password.isEmpty()) {
