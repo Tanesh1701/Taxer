@@ -1,11 +1,11 @@
-TAXER               25/06/2022 19:08
+TAXER               26/06/2022 22:44
 ____________________________________
 
-Full name: Miss. Zahra Oozeer
-Address: Mauritius, Mauritius
-Contact Number: 54315092
+Full name: Mr. John Moses
+Address: 31st West Street, Vacoas
+Contact Number: 54268901
 National Identity Card(NIC): 12345678912345
 Tax Account Number(TAN): 12345678
-Type of Employment: Front End Designer
-Yearly Income: Rs 500000
-Tax: Rs 1875.0
+Type of Employment: Carpenter
+Yearly Income: Rs 280000
+Tax: Rs 41.666666666666664

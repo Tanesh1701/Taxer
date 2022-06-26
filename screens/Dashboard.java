@@ -24,7 +24,7 @@ public class Dashboard extends JFrame{
     JPanel homePanel = new JPanel();
     JPanel logoutPanel = new JPanel();
 
-    TaxReturn taxReturnForm = new TaxReturn();
+    TaxReturn taxReturnForm;
     Calculator calculator = new Calculator();
     Settings settings;
     static JFrame dashboardFrame = new JFrame();
@@ -34,6 +34,7 @@ public class Dashboard extends JFrame{
 
         dashboardFrame.setLayout(new BorderLayout());
 
+        taxReturnForm = new TaxReturn(user.getId());
         settings = new Settings(user);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridy = 1;

@@ -11,13 +11,14 @@ public class UserDaoAccesser implements UserDao{
 
     @Override
     public int insert(User user) throws SQLException {
-        String query = "insert into users(userfullname, "+"username, "+ "email, " + "password, " + "type)" + " VALUES (?, ?, ?, ?, ?)";
+        String query = "insert into users(userfullname, "+"username, "+ "email, " + "password, " + "type," + "hasFilledTaxes)" + " VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, user.getFullName());
         ps.setString(2, user.getUserName());
         ps.setString(3, user.getEmail());
         ps.setString(4, user.getPassword());
         ps.setString(5, "user");
+        ps.setString(6, "false");
         int n = ps.executeUpdate();
         return n;
     }
@@ -101,7 +102,6 @@ public class UserDaoAccesser implements UserDao{
 
     @Override
     public void update(User user, int id) throws SQLException {
-  
         String query = "update users set userfullname=?, " + " email=?, " + " password=? " + " where id = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, user.getFullName());
@@ -111,5 +111,12 @@ public class UserDaoAccesser implements UserDao{
         ps.executeUpdate();
     }
 
-    
+    @Override
+    public void updateTaxInfo(int id) throws SQLException {
+        String query = "update users set hasFilledTaxes=? where id = ?";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setString(1, "true");
+        ps.setInt(2, id);
+        ps.executeUpdate();
+    }
 }

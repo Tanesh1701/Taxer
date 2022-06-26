@@ -3,6 +3,8 @@ import java.io.*;
 import java.awt.*;
 import models.Text;
 import javax.swing.*;
+
+import Database.UserDaoAccesser;
 import models.Button;
 import models.TaxField;
 import java.nio.file.Files;
@@ -53,8 +55,11 @@ public class TaxReturn extends JPanel{
     double tax = 0, chargeableIncome = 0, dependent0 = 275000, dependent1 = 385000;
     String gender;
 
-    public TaxReturn(){
+    UserDaoAccesser uda = new UserDaoAccesser();
+    int id = 0;
+    public TaxReturn(int userId){
         //radioBtnPanel and its components
+        id = userId;
         radioBtnPanel = new JPanel();
         radioBtnPanel.setLayout(new FlowLayout());
         ButtonGroup bgRadio = new ButtonGroup();
@@ -310,7 +315,8 @@ public class TaxReturn extends JPanel{
                                     bw.write("Tax: Rs " + tax + "\n");
 
                                     errorMsg = new Text("You have succesfully submitted your tax return form!", 14);
-                                    JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Success", JOptionPane.INFORMATION_MESSAGE);                      
+                                    JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Success", JOptionPane.INFORMATION_MESSAGE);
+                                    uda.updateTaxInfo(id); 
                                     bw.close();
                                 } catch (Exception exception) {
                                     System.out.println(exception);
@@ -341,14 +347,5 @@ public class TaxReturn extends JPanel{
 
     public JPanel getMainPanel() {
         return mainPanel;
-    }
-
-    public static void main(String[] args) {
-        JFrame f = new JFrame();
-        TaxReturn tr = new TaxReturn();
-
-        f.add(tr.getMainPanel());
-        f.setSize(new Dimension(600,600));
-        f.setVisible(true);
     }
 }
