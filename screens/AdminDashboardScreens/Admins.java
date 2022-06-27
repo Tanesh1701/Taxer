@@ -6,7 +6,6 @@ import java.awt.*;
 import java.sql.SQLException;
 import models.Constants;
 import models.Table;
-import models.Text;
 
 public class Admins extends JPanel {
     private JPanel adminsPanel = new JPanel();
