@@ -54,7 +54,7 @@ public class Dashboard extends JFrame{
         username.getTitle().setForeground(Color.WHITE);
         username.getTitle().setBorder(BorderFactory.createEmptyBorder(0, 40, 0, 10));
 
-        Text status = new Text("Status: TRUE", 14);
+        Text status = new Text("Status: " + user.getHasFilledTaxes(), 14);
         status.getTitle().setForeground(Color.WHITE);
         status.getTitle().setBorder(BorderFactory.createEmptyBorder(20, 40, 0, 10));
 

@@ -7,6 +7,7 @@ public class User {
     private String email;
     private String password;
     private String type;
+    private String hasFilledTaxes;
 
     public int getId() {
         return id;
@@ -49,5 +50,13 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getHasFilledTaxes() {
+        return hasFilledTaxes;
+    }
+
+    public void setHasFilledTaxes(String hasFilledTaxes) {
+        this.hasFilledTaxes = hasFilledTaxes;
     }
 }

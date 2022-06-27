@@ -18,7 +18,7 @@ public class UserDaoAccesser implements UserDao{
         ps.setString(3, user.getEmail());
         ps.setString(4, user.getPassword());
         ps.setString(5, "user");
-        ps.setString(6, "false");
+        ps.setString(6, "False");
         int n = ps.executeUpdate();
         return n;
     }
@@ -51,6 +51,7 @@ public class UserDaoAccesser implements UserDao{
             user.setEmail(rs.getString("email"));
             user.setPassword(rs.getString("password"));
             user.setType(rs.getString("type"));
+            user.setHasFilledTaxes(rs.getString("hasFilledTaxes"));
         }
   
         if (check == true) {
@@ -75,6 +76,7 @@ public class UserDaoAccesser implements UserDao{
             user.setUserName(rs.getString("username"));
             user.setEmail(rs.getString("email"));
             user.setPassword(rs.getString("password"));
+            user.setHasFilledTaxes(rs.getString("hasFilledTaxes"));
             ls.add(user);
         }
         return ls;
@@ -115,7 +117,7 @@ public class UserDaoAccesser implements UserDao{
     public void updateTaxInfo(int id) throws SQLException {
         String query = "update users set hasFilledTaxes=? where id = ?";
         PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString(1, "true");
+        ps.setString(1, "True");
         ps.setInt(2, id);
         ps.executeUpdate();
     }

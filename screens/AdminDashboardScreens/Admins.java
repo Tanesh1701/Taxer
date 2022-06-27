@@ -5,11 +5,12 @@ import Database.UserDaoAccesser;
 import java.awt.*;
 import java.sql.SQLException;
 import models.Constants;
+import models.Table;
 import models.Text;
 
 public class Admins extends JPanel {
     private JPanel adminsPanel = new JPanel();
-    private JTable adminsTable = new JTable();
+    private Table adminsTable = new Table();
     Constants constants = new Constants();
     UserDaoAccesser uda = new UserDaoAccesser();
 
@@ -30,17 +31,8 @@ public class Admins extends JPanel {
             tableModel.addRow(admins);
         }
 
-        adminsTable.setModel(tableModel);
-        adminsTable.getTableHeader().setBackground(constants.getSecondaryColor());
-        adminsTable.getTableHeader().setForeground(constants.getPrimaryColor());
-        try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, Text.class.getResourceAsStream("../Assets/Fonts/VarelaRound-Regular.TTF"));
-            adminsTable.setFont(font.deriveFont(Font.PLAIN, 12f));
-            adminsTable.getTableHeader().setFont(font.deriveFont(Font.PLAIN, 13f));
-        } catch (Exception e) {
-            System.out.println(e);
-        } 
-        JScrollPane scrollPane = new JScrollPane(adminsTable);
+        adminsTable.getTable().setModel(tableModel);
+        JScrollPane scrollPane = new JScrollPane(adminsTable.getTable());
 
         adminsPanel.add(scrollPane);
         adminsPanel.setBackground(Color.WHITE);
