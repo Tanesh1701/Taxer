@@ -65,7 +65,8 @@ public class Calculator extends JPanel{
 
         clear = new Button("Clear");
         clear.getButton().addActionListener(bh);
-        clear.getButton().setPreferredSize(new Dimension(100, 50));
+        clear.getButton().setPreferredSize(new Dimension(100, 40));
+        clear.getButton().setBorder(BorderFactory.createEmptyBorder(5,0,0,0));
         clear.getButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
         moreKeysPanel.add(clear.getButton());
 

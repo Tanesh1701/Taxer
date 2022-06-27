@@ -31,32 +31,45 @@ public class Dashboard extends JFrame{
 
     public Dashboard(User user) {
         dashboardFrame.setTitle("Dashboard");
-
         dashboardFrame.setLayout(new BorderLayout());
+
+        menuPanel.setBackground(Color.decode("#5200ff"));
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        menuPanel.setPreferredSize(new Dimension(200, 100));
 
         taxReturnForm = new TaxReturn(user.getId());
         settings = new Settings(user);
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        LocalDateTime currentTime = LocalDateTime.now();
+        Text time  = new Text((dtf.format(currentTime)), 12);
+        time.getTitle().setForeground(Color.white);
+        time.getTitle().setBorder(BorderFactory.createEmptyBorder(10, 5, 20, 5));
+
+        Text welcome = new Text("Welcome", 15);
+        welcome.getTitle().setForeground(Color.WHITE);
+        welcome.getTitle().setBorder(BorderFactory.createEmptyBorder(20, 50, 5, 0));
+
+        Text username = new Text(user.getFullName(), 14);
+        username.getTitle().setForeground(Color.WHITE);
+        username.getTitle().setBorder(BorderFactory.createEmptyBorder(0, 40, 0, 10));
+
+        Text status = new Text("Status: TRUE", 14);
+        status.getTitle().setForeground(Color.WHITE);
+        status.getTitle().setBorder(BorderFactory.createEmptyBorder(20, 40, 0, 10));
+
+        menuPanel.add(time.getTitle());
+        menuPanel.add(welcome.getTitle());
+        menuPanel.add(username.getTitle());
+        menuPanel.add(status.getTitle());
+        menuPanel.add(Box.createRigidArea(new Dimension(0,100)));
+
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridy = 1;
         gbc.gridwidth = 2;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
-
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        LocalDateTime currentTime = LocalDateTime.now();
-        Text time  = new Text((dtf.format(currentTime)), 12);
-        time.getTitle().setForeground(Color.white);
-
-        menuPanel.setBackground(Color.decode("#5200ff"));
-        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
-        menuPanel.setPreferredSize(new Dimension(200, 100));
-
-        Text username = new Text(user.getFullName(), 14);
-        username.getTitle().setForeground(Color.WHITE);
-        menuPanel.add(time.getTitle());
-        menuPanel.add(username.getTitle());
-        menuPanel.add(Box.createRigidArea(new Dimension(0,100)));
 
         containerPanel.setLayout(new GridBagLayout());
 
