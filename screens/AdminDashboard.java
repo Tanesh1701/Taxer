@@ -3,6 +3,9 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import models.Text;
 import models.User;
 import screens.AdminDashboardScreens.Admins;
@@ -46,9 +49,20 @@ public class AdminDashboard extends JFrame {
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setPreferredSize(new Dimension(200, 100));
 
-        Text username = new Text(user.getFullName(), 14);
-        username.getTitle().setForeground(Color.WHITE);
-        menuPanel.add(username.getTitle());
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        LocalDateTime currentTime = LocalDateTime.now();
+        Text time  = new Text((dtf.format(currentTime)), 12);
+        time.getTitle().setForeground(Color.white);
+        time.getTitle().setBorder(BorderFactory.createEmptyBorder(10, 75, 20, 5));
+
+        String username = user.getFullName().split(" ")[0];
+
+        Text welcome = new Text("Welcome " + username, 15);
+        welcome.getTitle().setForeground(Color.WHITE);
+        welcome.getTitle().setBorder(BorderFactory.createEmptyBorder(20, 32, 5, 0));
+
+        menuPanel.add(time.getTitle());
+        menuPanel.add(welcome.getTitle());
         menuPanel.add(Box.createRigidArea(new Dimension(0,100)));
 
         containerPanel.setLayout(new GridBagLayout());
