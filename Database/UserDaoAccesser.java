@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import models.User;
+import models.UserDetails;
 
 public class UserDaoAccesser implements UserDao{
     static Connection connection = DatabaseConnection.getConnection();
@@ -114,11 +115,40 @@ public class UserDaoAccesser implements UserDao{
     }
 
     @Override
-    public void updateTaxInfo(int id) throws SQLException {
+    public void updateTaxInfo(int id, String fullname, String job, Long nic, int tan, double tax) throws SQLException {
         String query = "update users set hasFilledTaxes=? where id = ?";
+        String query2 = "insert into taxDetails (userID, FullName, Job, NIC, TAN, TAX) VALUES (?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, "True");
         ps.setInt(2, id);
+        PreparedStatement insertDetails = connection.prepareStatement(query2);
+        insertDetails.setInt(1, id);
+        insertDetails.setString(2, fullname);
+        insertDetails.setString(3, job);
+        insertDetails.setLong(4, nic);
+        insertDetails.setInt(5, tan);
+        insertDetails.setDouble(6, tax);
         ps.executeUpdate();
+        insertDetails.executeUpdate();
+    }
+
+    @Override
+    public ArrayList<UserDetails> getUserDetails() throws SQLException {
+        String query = "select * from taxDetails";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<UserDetails> ls = new ArrayList<UserDetails>();
+  
+        while (rs.next()) {
+            UserDetails user = new UserDetails();
+            user.setId(rs.getInt("userID"));
+            user.setFullname(rs.getString("FullName"));
+            user.setJob(rs.getString("Job"));
+            user.setNic(rs.getLong("NIC"));
+            user.setTan(rs.getInt("TAN"));
+            user.setTax(rs.getDouble("TAX"));
+            ls.add(user);
+        }
+        return ls;
     }
 }

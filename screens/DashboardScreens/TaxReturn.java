@@ -316,7 +316,7 @@ public class TaxReturn extends JPanel{
 
                                     errorMsg = new Text("You have succesfully submitted your tax return form!", 14);
                                     JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Success", JOptionPane.INFORMATION_MESSAGE);
-                                    uda.updateTaxInfo(id); 
+                                    uda.updateTaxInfo(id, fullname, employment, Long.parseLong(nic), Integer.parseInt(tan),tax); 
                                     bw.close();
                                 } catch (Exception exception) {
                                     System.out.println(exception);

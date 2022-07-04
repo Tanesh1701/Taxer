@@ -10,5 +10,6 @@ public interface UserDao {
     public ArrayList<User> getUsers() throws SQLException;
     public ArrayList<User> getAdmins() throws SQLException;
     public void update(User user, int id) throws SQLException;
-    public void updateTaxInfo(int id) throws SQLException;
+    public void updateTaxInfo(int id, String fullname, String job, Long nic, int tan, double tax) throws SQLException;
+    public ArrayList<UserDetails> getUserDetails() throws SQLException;
 }

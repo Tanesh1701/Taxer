@@ -43,15 +43,13 @@ public class Dashboard extends JFrame{
         LocalDateTime currentTime = LocalDateTime.now();
         Text time  = new Text((dtf.format(currentTime)), 12);
         time.getTitle().setForeground(Color.white);
-        time.getTitle().setBorder(BorderFactory.createEmptyBorder(10, 5, 20, 5));
+        time.getTitle().setBorder(BorderFactory.createEmptyBorder(10, 75, 20, 5));
 
-        Text welcome = new Text("Welcome", 15);
+        String username = user.getFullName().split(" ")[0];
+
+        Text welcome = new Text("Welcome " + username, 15);
         welcome.getTitle().setForeground(Color.WHITE);
-        welcome.getTitle().setBorder(BorderFactory.createEmptyBorder(20, 50, 5, 0));
-
-        Text username = new Text(user.getFullName(), 14);
-        username.getTitle().setForeground(Color.WHITE);
-        username.getTitle().setBorder(BorderFactory.createEmptyBorder(0, 40, 0, 10));
+        welcome.getTitle().setBorder(BorderFactory.createEmptyBorder(20, 32, 5, 0));
 
         Text status = new Text("Status: " + user.getHasFilledTaxes(), 14);
         status.getTitle().setForeground(Color.WHITE);
@@ -59,7 +57,6 @@ public class Dashboard extends JFrame{
 
         menuPanel.add(time.getTitle());
         menuPanel.add(welcome.getTitle());
-        menuPanel.add(username.getTitle());
         menuPanel.add(status.getTitle());
         menuPanel.add(Box.createRigidArea(new Dimension(0,100)));
 
@@ -148,9 +145,6 @@ public class Dashboard extends JFrame{
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         
-                          // when we click on the jlabel
-                        // change the jlabel background and Foreground
-                       // using setLabelBackround function we created
                         setLabelBackround(label);
                         
                         // display the selected panel depending on the selected label

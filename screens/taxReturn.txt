@@ -1,11 +1,11 @@
-TAXER               26/06/2022 22:44
+TAXER               04/07/2022 22:49
 ____________________________________
 
 Full name: Mr. John Moses
-Address: 31st West Street, Vacoas
-Contact Number: 54268901
+Address: ndejdje
+Contact Number: 12345678
 National Identity Card(NIC): 12345678912345
 Tax Account Number(TAN): 12345678
-Type of Employment: Carpenter
-Yearly Income: Rs 280000
-Tax: Rs 41.666666666666664
+Type of Employment: hduenfeu
+Yearly Income: Rs 300000
+Tax: Rs 208.33333333333334

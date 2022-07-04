@@ -7,16 +7,18 @@ import models.Text;
 import models.User;
 import screens.AdminDashboardScreens.Admins;
 import screens.AdminDashboardScreens.Users;
+import screens.AdminDashboardScreens.UsersTax;
 
 import java.awt.*;
 
 public class AdminDashboard extends JFrame {
-    String menuItems[] = {"Users", "Admins", "Exit"};
-    JLabel[] menuLabels = new JLabel[3];
-    JPanel[] panels = new JPanel[2];
+    String menuItems[] = {"Users", "Admins", "Get user details", "Exit"};
+    JLabel[] menuLabels = new JLabel[4];
+    JPanel[] panels = new JPanel[3];
     JPanel avatarPanel = new JPanel();
     Users userPanel;
     Admins adminPanel;
+    UsersTax usersTax;
     JPanel containerPanel = new JPanel();
     JPanel menuPanel = new JPanel();
 
@@ -26,6 +28,7 @@ public class AdminDashboard extends JFrame {
         try {
             userPanel = new Users();
             adminPanel = new Admins();
+            usersTax = new UsersTax();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -60,6 +63,7 @@ public class AdminDashboard extends JFrame {
 
         panels[0] = userPanel.getUsersPanel();
         panels[1] = adminPanel.getAdminsPanel();
+        panels[2] = usersTax.getUsersPanel();
         
         for(int i = 0; i < panels.length; i++) {
             containerPanel.add(panels[i], gbc);
@@ -80,18 +84,13 @@ public class AdminDashboard extends JFrame {
 
     public void setLabelBackround(JLabel label)
     {
-        // reset labels to their default design
         for (JLabel menuItem : menuLabels)
         {
-           // change the jlabel background color to white
-           //menuItem.setBackground(new Color(46,49,49));
-           // change the jlabel Foreground color to blue
            menuItem.setForeground(Color.white); 
         }
-        
-        // change the jlabel background color to white
+                
         label.setBackground(Color.white);
-        // change the jlabel Foreground color to blue
+
         label.setForeground(Color.decode("#C6C3D5"));
     }
 
@@ -123,13 +122,8 @@ public class AdminDashboard extends JFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         
-                          // when we click on the jlabel
-                        // change the jlabel background and Foreground
-                       // using setLabelBackround function we created
                         setLabelBackround(label);
                         
-                        // display the selected panel depending on the selected label
-                       // using the showPanel function
                         switch (label.getText().trim()){
                             case "Users":
                                 showPanel(userPanel.getUsersPanel());
@@ -137,6 +131,9 @@ public class AdminDashboard extends JFrame {
                                    
                             case "Admins":
                                 showPanel(adminPanel.getAdminsPanel());
+                                break;
+                            case "Get user details":
+                                showPanel(usersTax.getUsersPanel());
                                 break;
                             case "Exit":
                                 AdminDashboard.getDashboardFrame().dispose();
