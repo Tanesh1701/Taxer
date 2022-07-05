@@ -305,13 +305,13 @@ public class TaxReturn extends JPanel{
                                     BufferedWriter bw = Files.newBufferedWriter(Paths.get("./screens/taxReturn.txt"));
                                     bw.write("TAXER" + "               " + dtf.format(currentTime) + "\n");
                                     bw.write("____________________________________" + "\n" + "\n");
-                                    bw.write("Full name: " + gender + " " + taxFieldName.getTaxTextField().getText() + "\n");
-                                    bw.write("Address: " + taxfieldAddress.getTaxTextField().getText() + "\n");
-                                    bw.write("Contact Number: " + taxFieldContact.getTaxTextField().getText() + "\n");
-                                    bw.write("National Identity Card(NIC): " + taxFieldNIC.getTaxTextField().getText() + "\n");
-                                    bw.write("Tax Account Number(TAN): " + taxFieldTAN.getTaxTextField().getText() + "\n");
-                                    bw.write("Type of Employment: " + taxFieldTypeEmp.getTaxTextField().getText() + "\n");
-                                    bw.write("Yearly Income: Rs " + taxFieldIncome.getTaxTextField().getText() + "\n");
+                                    bw.write("Full name: " + gender + " " + fullname + "\n");
+                                    bw.write("Address: " + address + "\n");
+                                    bw.write("Contact Number: " + num + "\n");
+                                    bw.write("National Identity Card(NIC): " + nic + "\n");
+                                    bw.write("Tax Account Number(TAN): " + tan + "\n");
+                                    bw.write("Type of Employment: " + employment + "\n");
+                                    bw.write("Yearly Income: Rs " + income + "\n");
                                     bw.write("Tax: Rs " + tax + "\n");
 
                                     errorMsg = new Text("You have succesfully submitted your tax return form!", 14);

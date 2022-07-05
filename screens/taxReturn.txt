@@ -1,11 +1,11 @@
-TAXER               04/07/2022 22:49
+TAXER               05/07/2022 11:45
 ____________________________________
 
 Full name: Mr. John Moses
-Address: ndejdje
-Contact Number: 12345678
+Address: Noah's Ark
+Contact Number: 00000000
 National Identity Card(NIC): 12345678912345
 Tax Account Number(TAN): 12345678
-Type of Employment: hduenfeu
+Type of Employment: Carpenter
 Yearly Income: Rs 300000
 Tax: Rs 208.33333333333334
