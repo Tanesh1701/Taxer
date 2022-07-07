@@ -9,6 +9,7 @@ import models.Button;
 import models.TaxField;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.Formatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -263,11 +264,11 @@ public class TaxReturn extends JPanel{
             if(checkBox1.isSelected()){
                 chargeableIncome = Double.parseDouble(taxFieldIncome.getTaxTextField().getText()) - dependent0;  
                 tax = (0.1/12) * chargeableIncome;
-                textFieldRate.setText(new BigDecimal(chargeableIncome).toPlainString());   
+                textFieldRate.setText(new DecimalFormat("#.##").format(tax));   
             } else{
                 chargeableIncome = Double.parseDouble(taxFieldIncome.getTaxTextField().getText()) - dependent1;
                 tax = (0.1/12) * chargeableIncome;
-                textFieldRate.setText(new BigDecimal(chargeableIncome).toPlainString());
+                textFieldRate.setText(new DecimalFormat("#.##").format(tax));
             }
         }
     }
@@ -293,9 +294,7 @@ public class TaxReturn extends JPanel{
             boolean jobHasInvalidChar = m2.find();
 
             if(fullname.isEmpty() || address.isEmpty() || num.isEmpty() || nic.isEmpty() || tan.isEmpty() || employment.isEmpty() || income.isEmpty()){
-
                 JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
-            
             } else {
                 
                 if(!(fullname.matches(".*\\d.*") && !(nameHasInvalidChar) && !(jobHasInvalidChar) && employment.matches(".*\\d.*"))){
