@@ -302,7 +302,7 @@ public class TaxReturn extends JPanel{
 
                     if(num.matches("[0-9]+") && income.matches("[0-9]+")){
 
-                        if(nic.matches("[0-9]+") && nic.length() == 14){
+                        if(nic.length() == 14){
                             
                             if(tan.matches("[0-9]+") && tan.length() == 8){
                                 
