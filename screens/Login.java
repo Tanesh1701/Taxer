@@ -97,7 +97,7 @@ public class Login extends JPanel{
             
         });
         JPanel containerBtn = new JPanel();
-        containerBtn.setBackground(Color.WHITE);        
+        containerBtn.setBackground(constants.getPrimaryColor());        
         containerBtn.add(loginBtn.getButton());
         
 

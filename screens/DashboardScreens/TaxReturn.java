@@ -286,7 +286,7 @@ public class TaxReturn extends JPanel{
             String income = taxFieldIncome.getTaxTextField().getText();
             Text errorMsg = new Text("You cannot leave any empty fields!", 14);
 
-            Pattern p = Pattern.compile("[^A-Za-z0-9]");
+            Pattern p = Pattern.compile("[^A-Za-z0-9\s]");
             Matcher m = p.matcher(fullname);
             Matcher m2 = p.matcher(employment);
             boolean nameHasInvalidChar = m.find();

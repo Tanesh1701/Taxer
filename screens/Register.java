@@ -121,7 +121,7 @@ public class Register extends JPanel{
             user.setPassword(password);
             Text errorMsg = new Text("You cannot leave any empty fields!", 14);
             User UserRegistered = new User();
-            Pattern p = Pattern.compile("[^A-Za-z0-9]");
+            Pattern p = Pattern.compile("[^A-Za-z0-9\s]");
             Matcher m = p.matcher(fullname);
             boolean nameHasInvalidChar = m.find();
 
