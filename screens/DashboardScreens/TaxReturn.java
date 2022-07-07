@@ -10,6 +10,8 @@ import models.TaxField;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Formatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.math.BigDecimal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -284,13 +286,19 @@ public class TaxReturn extends JPanel{
             String income = taxFieldIncome.getTaxTextField().getText();
             Text errorMsg = new Text("You cannot leave any empty fields!", 14);
 
+            Pattern p = Pattern.compile("[^A-Za-z0-9]");
+            Matcher m = p.matcher(fullname);
+            Matcher m2 = p.matcher(employment);
+            boolean nameHasInvalidChar = m.find();
+            boolean jobHasInvalidChar = m2.find();
+
             if(fullname.isEmpty() || address.isEmpty() || num.isEmpty() || nic.isEmpty() || tan.isEmpty() || employment.isEmpty() || income.isEmpty()){
 
                 JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
             
             } else {
                 
-                if(!(fullname.matches(".*\\d.*") && employment.matches(".*\\d.*"))){
+                if(!(fullname.matches(".*\\d.*") && !(nameHasInvalidChar) && !(jobHasInvalidChar) && employment.matches(".*\\d.*"))){
 
                     if(num.matches("[0-9]+") && income.matches("[0-9]+")){
 
