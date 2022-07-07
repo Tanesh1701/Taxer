@@ -35,7 +35,7 @@ public class UsersTax extends JPanel{
         JScrollPane scrollPane = new JScrollPane(usersTable.getTable());
 
         usersPanel.add(scrollPane);
-        usersPanel.setBackground(Color.WHITE);
+        usersPanel.setBackground(new Constants().getPrimaryColor());
         usersPanel.setVisible(true);
     }
 

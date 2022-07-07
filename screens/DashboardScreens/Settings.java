@@ -27,7 +27,7 @@ public class Settings extends JPanel {
     public Settings(User user) {
         id = user.getId();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        panel.setBackground(Color.white);
+        panel.setBackground(constants.getPrimaryColor());
 
         panelBtnBack.setLayout(new FlowLayout());
         panelBtnBack.setPreferredSize(new Dimension(100, 50));
@@ -76,7 +76,7 @@ public class Settings extends JPanel {
         ButtonHandler2 handler = new ButtonHandler2();
         updateButton.getButton().addActionListener(handler);
         JPanel containerBtn = new JPanel();
-        containerBtn.setBackground(Color.WHITE);
+        containerBtn.setBackground(constants.getPrimaryColor());
         containerBtn.setBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0));        
         containerBtn.add(updateButton.getButton());
 

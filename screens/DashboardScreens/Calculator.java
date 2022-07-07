@@ -21,7 +21,7 @@ public class Calculator extends JPanel{
 
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(new Constants().getPrimaryColor());
         panel.setBorder(BorderFactory.createEmptyBorder(0,1,0,0));
 
         Text title = new Text("Calculator", 20);
@@ -58,7 +58,7 @@ public class Calculator extends JPanel{
         numberKeysPanel.setBorder(BorderFactory.createEmptyBorder(-1,0,-2,0));
 
         moreKeysPanel = new JPanel();
-        moreKeysPanel.setBackground(Color.WHITE);
+        moreKeysPanel.setBackground(new Constants().getPrimaryColor());
         moreKeysPanel.setLayout(new FlowLayout());
         moreKeysPanel.setPreferredSize(new Dimension(500, 75));
         moreKeysPanel.setBorder(BorderFactory.createEmptyBorder(0,0,5,0));

@@ -34,7 +34,7 @@ public class Admins extends JPanel {
         JScrollPane scrollPane = new JScrollPane(adminsTable.getTable());
 
         adminsPanel.add(scrollPane);
-        adminsPanel.setBackground(Color.WHITE);
+        adminsPanel.setBackground(new Constants().getPrimaryColor());
         adminsPanel.setVisible(true);
     }
 

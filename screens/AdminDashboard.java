@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import models.Constants;
 import models.Text;
 import models.User;
 import screens.AdminDashboardScreens.Admins;
@@ -45,20 +46,20 @@ public class AdminDashboard extends JFrame {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
 
-        menuPanel.setBackground(Color.decode("#5200ff"));
+        menuPanel.setBackground(new Constants().getSecondaryColor());
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setPreferredSize(new Dimension(200, 100));
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         LocalDateTime currentTime = LocalDateTime.now();
         Text time  = new Text((dtf.format(currentTime)), 12);
-        time.getTitle().setForeground(Color.white);
+        time.getTitle().setForeground(new Constants().getPrimaryColor());
         time.getTitle().setBorder(BorderFactory.createEmptyBorder(10, 75, 20, 5));
 
         String username = user.getFullName().split(" ")[0];
 
         Text welcome = new Text("Welcome " + username, 15);
-        welcome.getTitle().setForeground(Color.WHITE);
+        welcome.getTitle().setForeground(new Constants().getPrimaryColor());
         welcome.getTitle().setBorder(BorderFactory.createEmptyBorder(20, 32, 5, 0));
 
         menuPanel.add(time.getTitle());
@@ -69,7 +70,7 @@ public class AdminDashboard extends JFrame {
 
         for(int i = 0; i < menuLabels.length; i++) {
             Text text = new Text(menuItems[i], 14);
-            text.getTitle().setForeground(Color.WHITE);
+            text.getTitle().setForeground(new Constants().getPrimaryColor());
             menuLabels[i] = text.getTitle();
             menuPanel.add(menuLabels[i], BorderLayout.CENTER);
             menuPanel.add(Box.createRigidArea(new Dimension(10,30)));
@@ -100,10 +101,10 @@ public class AdminDashboard extends JFrame {
     {
         for (JLabel menuItem : menuLabels)
         {
-           menuItem.setForeground(Color.white); 
+           menuItem.setForeground(new Constants().getPrimaryColor()); 
         }
                 
-        label.setBackground(Color.white);
+        label.setBackground(new Constants().getPrimaryColor());
 
         label.setForeground(Color.decode("#C6C3D5"));
     }

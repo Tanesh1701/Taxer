@@ -87,7 +87,7 @@ public class Register extends JPanel{
         ButtonHandler2 handler = new ButtonHandler2();
         registerButton.getButton().addActionListener(handler);
         JPanel containerBtn = new JPanel();
-        containerBtn.setBackground(Color.WHITE);
+        containerBtn.setBackground(constants.getPrimaryColor());
         containerBtn.setBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0));        
         containerBtn.add(registerButton.getButton());
 

@@ -1,10 +1,11 @@
 package screens;
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
+
+import models.Constants;
 import models.Text;
 import models.User;
 import screens.DashboardScreens.Calculator;
@@ -32,7 +33,7 @@ public class Dashboard extends JFrame{
         dashboardFrame.setTitle("Dashboard");
         dashboardFrame.setLayout(new BorderLayout());
 
-        menuPanel.setBackground(Color.decode("#5200ff"));
+        menuPanel.setBackground(new Constants().getSecondaryColor());
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setPreferredSize(new Dimension(200, 100));
 
@@ -42,17 +43,17 @@ public class Dashboard extends JFrame{
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         LocalDateTime currentTime = LocalDateTime.now();
         Text time  = new Text((dtf.format(currentTime)), 12);
-        time.getTitle().setForeground(Color.white);
+        time.getTitle().setForeground(new Constants().getPrimaryColor());
         time.getTitle().setBorder(BorderFactory.createEmptyBorder(10, 75, 20, 5));
 
         String username = user.getFullName().split(" ")[0];
 
         Text welcome = new Text("Welcome " + username, 15);
-        welcome.getTitle().setForeground(Color.WHITE);
+        welcome.getTitle().setForeground(new Constants().getPrimaryColor());
         welcome.getTitle().setBorder(BorderFactory.createEmptyBorder(20, 32, 5, 0));
 
         Text status = new Text("Status: " + user.getHasFilledTaxes(), 14);
-        status.getTitle().setForeground(Color.WHITE);
+        status.getTitle().setForeground(new Constants().getPrimaryColor());
         status.getTitle().setBorder(BorderFactory.createEmptyBorder(20, 40, 0, 10));
 
         menuPanel.add(time.getTitle());
@@ -108,11 +109,11 @@ public class Dashboard extends JFrame{
            // change the jlabel background color to white
            //menuItem.setBackground(new Color(46,49,49));
            // change the jlabel Foreground color to blue
-           menuItem.setForeground(Color.white); 
+           menuItem.setForeground(new Constants().getPrimaryColor()); 
         }
         
         // change the jlabel background color to white
-        label.setBackground(Color.white);
+        label.setBackground(new Constants().getPrimaryColor());
         // change the jlabel Foreground color to blue
         label.setForeground(Color.decode("#C6C3D5"));
     }

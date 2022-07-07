@@ -8,7 +8,6 @@ import models.*;
 import java.awt.*;
 import javax.swing.*;
 import models.Button;
-import java.awt.Color;
 import java.awt.Dimension;
 import Database.UserDaoAccesser;
 import java.awt.event.ActionEvent;
