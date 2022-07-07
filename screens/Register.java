@@ -8,6 +8,8 @@ import java.awt.Dimension;
 import Database.UserDaoAccesser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Register extends JPanel{
     private Text header = new Text("Register Now", 18);
@@ -119,12 +121,15 @@ public class Register extends JPanel{
             user.setPassword(password);
             Text errorMsg = new Text("You cannot leave any empty fields!", 14);
             User UserRegistered = new User();
+            Pattern p = Pattern.compile("[^A-Za-z0-9]");
+            Matcher m = p.matcher(fullname);
+            boolean nameHasInvalidChar = m.find();
 
             if(fullname.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 JOptionPane.showMessageDialog(null, errorMsg.getTitle(), "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 if (password.length() >= 8) {
-                    if (!(fullname.matches(".*\\d.*"))) {
+                    if (!(fullname.matches(".*\\d.*")) && !(nameHasInvalidChar)) {
                         if (email.contains("@")) {
                             try {
                                 uda.insert(user);
