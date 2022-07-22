@@ -1,11 +1,11 @@
-TAXER               05/07/2022 11:45
+TAXER               07/07/2022 21:26
 ____________________________________
 
-Full name: Mr. John Moses
-Address: Noah's Ark
-Contact Number: 00000000
-National Identity Card(NIC): 12345678912345
-Tax Account Number(TAN): 12345678
-Type of Employment: Carpenter
+Full name: Mr. Saul Goodman
+Address: hds
+Contact Number: 53231990
+National Identity Card(NIC): 14173238187632
+Tax Account Number(TAN): 12245678
+Type of Employment: Lawyer
 Yearly Income: Rs 300000
 Tax: Rs 208.33333333333334
